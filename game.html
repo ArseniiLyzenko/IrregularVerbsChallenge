@@ -33,13 +33,13 @@
 -->
 
 	<div class="center">
-		<p>русское слово здесь</p>
+		<p>русско_слово_здесь</p>
 	</div>
         <div class="center">
             <form action="" autocomplete="off" method="get">
-                <input type="text" required autocomplete="off" title="Only [A-Z] and [a-z] letters" name="infinitive" placeholder="infinitive">
-                <input type="text" required autocomplete="off" title="Only [A-Z] and [a-z] letters" name="past" placeholder="past simple">
-                <input type="text" required autocomplete="off" title="Only [A-Z] and [a-z] letters" name="past_participle" placeholder="past participle">
+                <input type="text" required autocomplete="off" title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{1,15}" placeholder="infinitive     " name="infinitive" autofocus>
+                <input type="text" required autocomplete="off" title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{1,15}" placeholder="past simple    " name="past">
+                <input type="text" required autocomplete="off" title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{1,15}" placeholder="past participle" name="past_participle">
                 <br>
                 <br>
                 <input type="submit" id="reply_button" value="Reply">
