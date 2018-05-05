@@ -1,18 +1,70 @@
 <!DOCTYPE html>
-
 <html>
 	<head>
 		<meta charset="utf-8">
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
 		<title>Irregular verbs, challenge yourself!</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="script.js"></script>
 	</head>
 	<body>
-		<div class="center">
-			<h1>Welcome to Irregular verbs challenge!</h1>
-			<p>Rules: Enter three forms of verbs as many as you can. (one misstep - lose)</p>
-      <form action="">
-				<input type="submit" value="Bring it on!">
-			</form>
-		</div>
+		
+			<div id="section-one" class="section">
+				<div id="intro">
+					<h1>Welcome to Irregular verbs challenge!</h1>
+					<p>What to do? &#8594 enter three forms of verbs as many as you can.</p>
+					<form>
+						<input id="bring-it-on" type="button" value="Bring it on!" onclick=showGameArea() >
+					</form>
+				</div>
+			</div>
+			<div id="section-two" class="section">
+				<div id="game-area">
+					<p>place_for_id</p>
+					<p>русское_слово_здесь</p>
+					<form action="" autocomplete="off">
+						<input class="verb-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="infinitive"      name="infinitive">
+						<input class="verb-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="past simple"     name="past">
+						<input class="verb-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="past participle" name="past_participle">
+						<br>
+						<br>
+						<input type="button" id="enter-btn" value="Enter" onclick="">
+						<input type="reset">
+						<input type="button" id="give-up-btn" value="Give up" onclick=showOverlay()>
+					</form>
+				</div>
+			</div>
+			<div id="section-three" class="section">
+				<div id="overlay">
+					<div id="overlay-content">
+						<p id="game-over">Game over</p>
+						<br>
+						<p id="score">place_for_score</p>
+						<br>
+						<form autocomplete="off">
+							<input type="text" name="playerName" placeholder="Your name">
+							<input type="button" value="Enter" onclick=showIntro()>
+						</form>
+						<br>
+						<table style="margin:auto;">
+							<thead>
+								<tr>
+									<td>#</td>
+									<td>Name</td>
+									<td>Score</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Elon Musk</td>
+									<td>99</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		
 	</body>
 </html>

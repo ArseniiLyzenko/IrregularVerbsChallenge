@@ -5,4 +5,6 @@
 5) learning/play mode
 6) scoreboard administration
 7) progress of the game (percentage entered/all verbs) with nice animation
-8) bad nicknames protection for scoreboard
+8) "bad" nicknames protection for scoreboard
+
+?black-white?
