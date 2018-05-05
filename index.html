@@ -7,28 +7,28 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="script.js"></script>
 	</head>
-	<body>
+	<body onload="init()">
 		
 			<div id="section-one" class="section">
 				<div id="intro">
 					<h1>Welcome to Irregular verbs challenge!</h1>
 					<p>What to do? &#8594 enter three forms of verbs as many as you can.</p>
 					<form>
-						<input id="bring-it-on" type="button" value="Bring it on!" onclick=showGameArea() >
+						<input id="bring-it-on" type="button" value="Bring it on!" onclick=showGameArea()>
 					</form>
 				</div>
 			</div>
 			<div id="section-two" class="section">
 				<div id="game-area">
-					<p>place_for_id</p>
-					<p>русское_слово_здесь</p>
-					<form action="" autocomplete="off">
-						<input class="verb-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="infinitive"      name="infinitive">
-						<input class="verb-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="past simple"     name="past">
-						<input class="verb-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="past participle" name="past_participle">
+					<p id="verb-id">place_for_id</p>
+					<p id="verb-rus">русское_слово_здесь</p>
+					<form id="verbs-form" action="" autocomplete="off">
+						<input class="verbs-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="infinitive"      name="infinitive">
+						<input class="verbs-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="past simple"     name="past">
+						<input class="verbs-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="past participle" name="past_participle">
 						<br>
 						<br>
-						<input type="button" id="enter-btn" value="Enter" onclick="">
+						<input type="button" id="enter-btn" value="Enter" onclick="game()">
 						<input type="reset">
 						<input type="button" id="give-up-btn" value="Give up" onclick=showOverlay()>
 					</form>
@@ -42,7 +42,7 @@
 						<p id="score">place_for_score</p>
 						<br>
 						<form autocomplete="off">
-							<input type="text" name="playerName" placeholder="Your name">
+							<input id="name-input" type="text" name="playerName" placeholder="Your name">
 							<input type="button" value="Enter" onclick=showIntro()>
 						</form>
 						<br>
