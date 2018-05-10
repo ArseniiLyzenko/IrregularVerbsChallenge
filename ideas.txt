@@ -8,3 +8,10 @@
 8) "bad" nicknames protection for scoreboard
 
 ?black-white?
+?tiser?
+?game statistics?
+?change btn value (ok, enter, one more, aha!...)?
+?focuses?
+?if 10, are u cheating?
+
+?show the mistake on game-over?

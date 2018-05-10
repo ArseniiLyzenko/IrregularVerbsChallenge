@@ -5,66 +5,70 @@
 		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
 		<title>Irregular verbs, challenge yourself!</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="verbs100array.json"></script>
 		<script src="script.js"></script>
 	</head>
-	<body onload="init()">
-		
-			<div id="section-one" class="section">
-				<div id="intro">
-					<h1>Welcome to Irregular verbs challenge!</h1>
-					<p>What to do? &#8594 enter three forms of verbs as many as you can.</p>
-					<form>
-						<input id="bring-it-on" type="button" value="Bring it on!" onclick=showGameArea()>
-					</form>
-				</div>
+	<body onload="onLoad()">
+		<div id="section-one_div" class="sections">
+			<div id="intro_div">
+				<h1>Welcome to Irregular verbs challenge!</h1>
+				<p>What to do? &#8594 enter three forms of verbs as many as you can.</p>
+				<form>
+					<input id="bring-it-on_btn" type="button" value="Bring it on!" onclick=bringItOn()>
+				</form>
 			</div>
-			<div id="section-two" class="section">
-				<div id="game-area">
-					<p id="verb-id">place_for_id</p>
-					<p id="verb-rus">русское_слово_здесь</p>
-					<form id="verbs-form" action="" autocomplete="off">
-						<input class="verbs-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="infinitive"      name="infinitive">
-						<input class="verbs-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="past simple"     name="past">
-						<input class="verbs-input" type="text" required title="Only [A-Z] and [a-z] letters" pattern="[A-Za-z]{}" placeholder="past participle" name="past_participle">
-						<br>
-						<br>
-						<input type="button" id="enter-btn" value="Enter" onclick="game()">
-						<input type="reset">
-						<input type="button" id="give-up-btn" value="Give up" onclick=showOverlay()>
-					</form>
-				</div>
+		</div>
+		<div id="section-two_div" class="sections">
+			<div id="game-area_div">
+				<!--<p id="verb-id_p">place_for_id</p>-->
+				<p id="verb-rus_p">русское_слово_здесь</p>
+				<form id="verbs_form" action="#" autocomplete="off">
+					<table>
+						<tr>
+							<td>
+								<input id="v1_input" class="verbs_input" type="text" placeholder="infinitive (v1)">
+								<input id="v2_input" class="verbs_input" type="text" placeholder="past simple (v2)" id="v2_input">
+								<input id="v3_input" class="verbs_input" type="text" placeholder="past participle (v3)">
+							</td>
+						</tr>
+					</table>
+					<br>
+					<br>
+					<input type="button" id="submit-verbs_btn" value="Submit" onclick="submitVerbs()">
+					<input type="reset" id="reset_btn">
+					<input type="button" id="give-up_btn" value="Give up" onclick="giveUp()">
+				</form>
 			</div>
-			<div id="section-three" class="section">
-				<div id="overlay">
-					<div id="overlay-content">
-						<p id="game-over">Game over</p>
-						<br>
-						<p id="score">place_for_score</p>
-						<br>
-						<form autocomplete="off">
-							<input id="name-input" type="text" name="playerName" placeholder="Your name">
-							<input type="button" value="Enter" onclick=showIntro()>
-						</form>
-						<br>
-						<table style="margin:auto;">
-							<thead>
-								<tr>
-									<td>#</td>
-									<td>Name</td>
-									<td>Score</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Elon Musk</td>
-									<td>99</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+		</div>
+		<div id="section-three_div" class="sections">
+			<div id="game-over_div">
+				<p id="game-over_p">Game over</p>
+				<br>
+				<p id="score_p">place_for_score</p>
+				<br>
+				<form autocomplete="off">
+					<input id="name_input" type="text" name="playerName" placeholder="Your name">
+					<input id="submit-name_input" type="button" value="Submit" onclick="">
+					<input id="back-to-intro" type="button" value="Back" onclick="scrollToIntroSector()">
+				</form>
+				<br>
+				<table style="margin:auto;">
+					<thead>
+						<tr>
+							<td>#</td>
+							<td>Name</td>
+							<td>Score</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Elon Musk</td>
+							<td>99</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-		
+		</div>
 	</body>
 </html>

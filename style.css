@@ -36,25 +36,25 @@ input {
     }
 }*/
 
-.section {
+.sections {
     height: 100%;
     position: relative;
 }
 
-#intro {
+#intro_div {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#bring-it-on {
+#bring-it-on_btn {
     animation: shake 1.5s;
     animation-iteration-count: infinite;
     transition: 0.4s;
 }
 
-#bring-it-on:hover {
+#bring-it-on_btn:hover {
     font-size: 200%;
     transition: 0.4s;
     animation: shake 0.3s;
@@ -79,11 +79,7 @@ input {
     
 }
 
-#verb-rus {
-    font-size: 200%;
-}
-
-#game-area {
+#game-area_div {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -97,15 +93,19 @@ input {
     /*background-color: white;*/
 }
 
-.verbs-input {
+#verb-rus_p {
+    font-size: 200%;
+}
+
+.verbs_input {
     padding-top: 2px;
 }
 
-#give-up-btn {
+#give-up_btn {
     cursor: not-allowed;
 }
 
-#overlay {
+#game-over_div {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -135,21 +135,17 @@ input {
     /*color: white;*/
 }
 
-#overlay-content {
-    
-}
-
-#game-over {
-    font-size: 350%;
+#game-over_p {
+    font-size: 300%;
     margin: 0;
 }
 
-#score {
+#score_p {
     font-size: 200%;
     margin: 0;
 }
 
-#name-input {
+#name_input {
     padding-top: 2px;
     border-width: 1px;
 }
