@@ -67,25 +67,13 @@ var newVerbNumOnly = (function () {
 })();*/
 
 var verbs = (function () {
-    var _verbs = JSON.parse('[["1","say","said","said","говорить"],\
-                             ["2","make","made","made","делать/производить"],\
-                             ["3","go","went","gone","идти"],\
-                             ["4","take","took","taken","брать"],\
-                             ["5","come","came","come","приходить"],\
-                             ["6","see","saw","seen","видеть"],\
-                             ["7","know","knew","known","знать"],\
-                             ["8","get","got","got","получать"],\
-                             ["9","give","gave","given","давать"],\
-                             ["10","find","found","found","находить"],\
-                             ["11","think","thought","thought","думать"],\
-                             ["12","tell","told","told","сказать/рассказать"],\
-                             ["13","become","became","become","становиться"]]');
+    var _verbs = JSON.parse('[["1","say","said","said","говорить"]]');
     return {
         get:function () {return _verbs},
         length:function () {return _verbs.length;}
     }
 })();
-//СЛИТЬ ДВА ОБЪЕКТА
+//СЛИТЬ ДВА ОБЪЕКТА, а нахуя?
 var newVerbsOnly = (function (verbID) {
     var _newVerbsOnly = verbs.get().slice();
     return {
@@ -93,19 +81,19 @@ var newVerbsOnly = (function (verbID) {
         reSet:function () {_newVerbsOnly = verbs.get().slice();},
         length:function () {return _newVerbsOnly.length;},
         splice:function (verbID, param) {_newVerbsOnly.splice(verbID, param); return;},
-        setNewVerb:function (verbID) {
-            this.pickNewVerb(this.randNewVerbID());
+        setVerb:function (verbID) {
+            this.pickVerb(this.randVerbID());
             //document.getElementById("verb-id_p").innerHTML = "for_dev : " + verb.get()[0];
             console.log("picked_verb_id: " + verb.get()[0]);
             document.getElementById("verb-rus_p").innerHTML = verb.get()[4];
         },
-        pickNewVerb:function (verbID) {
+        pickVerb:function (verbID) {
             var newVerb = newVerbsOnly.get();
         
             verb.set(newVerbsOnly.get()[verbID]);
             newVerbsOnly.splice(verbID, 1);
         },
-        randNewVerbID:function () {
+        randVerbID:function () {
             return Math.floor(Math.random() * newVerbsOnly.length());
         }
     }   
@@ -126,19 +114,19 @@ function randVerbID() {
     return Math.floor(Math.random() * verbs.length());
 }
 
-function pickNewVerb(verbID) {
+function pickVerb(verbID) {
     var newVerb = newVerbsOnly.get();
 
     verb.set(newVerbsOnly.get()[verbID]);
     newVerbsOnly.splice(verbID, 1);
 }
 
-function randNewVerbID() {
+function randVerbID() {
     return Math.floor(Math.random() * newVerbsOnly.length());
 }
 
-function setNewVerb(verbID) {
-    pickNewVerb(verbID);
+function setVerb(verbID) {
+    pickVerb(verbID);
     //document.getElementById("verb-id_p").innerHTML = "for_dev : " + verb.get()[0];
     console.log("picked_verb_id: " + verb.get()[0]);
     document.getElementById("verb-rus_p").innerHTML = verb.get()[4];
@@ -146,9 +134,9 @@ function setNewVerb(verbID) {
 //-----------------------------------------------------------------------------
 function bringItOn() {
     resetVerbInputs();
-    //setNewVerb(newVerbsOnly.randNewVerbID());
-    newVerbsOnly.setNewVerb();
-    //verbs.setNewVerb();
+    //setVerb(newVerbsOnly.randVerbID());
+    newVerbsOnly.setVerb();
+    //verbs.setVerb();
     scrollToGameAreaSector();
 }
 //-----------------------------------------------------------------------------
@@ -163,9 +151,14 @@ function submitVerbs() {
     if (newVerbsOnly.length() == 0) {
         //go to sector 4
         document.getElementById("verb-rus_p").innerHTML = "Поздравляшки!"
+        document.getElementById("v1_input").disabled = true;
+        document.getElementById("v2_input").disabled = true;
+        document.getElementById("v3_input").disabled = true;
+        document.getElementById("submit-verbs_btn").disabled = true;
+        document.getElementById("reset_btn").disabled = true;
         return;
     }
-    newVerbsOnly.setNewVerb();
+    newVerbsOnly.setVerb();
     resetVerbInputs();
 }
 
