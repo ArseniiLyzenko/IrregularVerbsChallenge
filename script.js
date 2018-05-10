@@ -150,16 +150,20 @@ function submitVerbs() {
     score.plusPlus();
     if (newVerbsOnly.length() == 0) {
         //go to sector 4
-        document.getElementById("verb-rus_p").innerHTML = "Поздравляшки!"
-        document.getElementById("v1_input").disabled = true;
-        document.getElementById("v2_input").disabled = true;
-        document.getElementById("v3_input").disabled = true;
-        document.getElementById("submit-verbs_btn").disabled = true;
-        document.getElementById("reset_btn").disabled = true;
+        win();
         return;
     }
     newVerbsOnly.setVerb();
     resetVerbInputs();
+}
+
+function win() {
+    document.getElementById("verb-rus_p").innerHTML = "Поздравляшки!";
+    document.getElementById("v1_input").disabled = true;
+    document.getElementById("v2_input").disabled = true;
+    document.getElementById("v3_input").disabled = true;
+    document.getElementById("submit-verbs_btn").disabled = true;
+    document.getElementById("reset_btn").disabled = true;
 }
 
 function giveUp() {
