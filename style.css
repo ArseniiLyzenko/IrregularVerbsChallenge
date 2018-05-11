@@ -3,14 +3,64 @@ html,body{
     height: 100%;
     text-align: center;
     overflow: hidden;
+    color: #2e2e2e;
 }
 
 /*#main {
     text-align: center;
 }*/
 
-input {
+input[type=text] {
     text-align: center;
+     
+	line-height:170%;
+	
+	font-size:1em; 
+	color:#333; 
+	background: #fff; 
+	border:solid 1px #d9d9d9; 
+}
+
+input[type=button] {
+    font-size: 110%;
+    color: #2e2e2e;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    outline: none;
+}
+
+input[type=button]:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+input[type=button]:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;
+}
+
+input[type=reset] {
+    font-size: 110%;
+    color: #2e2e2e;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    outline: none;
+}
+
+input[type=reset]:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+input[type=reset]:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;
 }
 
 ::-webkit-input-placeholder {
@@ -94,7 +144,8 @@ input {
 }
 
 .verbs_input {
-    padding-top: 2px;
+	/*width:300px;*/ 
+	
 }
 
 #give-up_btn {
