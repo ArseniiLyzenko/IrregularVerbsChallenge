@@ -11,8 +11,10 @@
 ?tiser?
 ?game statistics?
 ?change btn value (ok, enter, one more, aha!...)?
-?focuses?
++?focuses?
 ?if 10, are u cheating?
 
 ?show the mistake on game-over?
-?simple animation for rus verb?
++?simple animation for rus verb?
+
+?insertions between rus verbs (i.e. Okay, what can you submit about next one? ;)?

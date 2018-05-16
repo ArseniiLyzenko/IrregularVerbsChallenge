@@ -11,14 +11,23 @@ html,body{
 }*/
 
 input[type=text] {
+    width: 200px;
     text-align: center;
-     
 	line-height:170%;
-	
 	font-size:1em; 
 	color:#333; 
 	background: #fff; 
 	border:solid 1px #d9d9d9; 
+    
+    /*font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+    border: 0;
+    outline: 0;
+    padding: 10px 1px;*/
+}
+
+input[type=text]:focus {
+
 }
 
 input[type=button] {
@@ -28,7 +37,6 @@ input[type=button] {
     border: 1px #DADADA solid;
     padding: 5px 10px;
     border-radius: 2px;
-    outline: none;
 }
 
 input[type=button]:hover {
@@ -42,6 +50,10 @@ input[type=button]:active {
     box-shadow: inset 1px 1px 1px #DFDFDF;
 }
 
+input[type=button]:focus {
+
+}
+
 input[type=reset] {
     font-size: 110%;
     color: #2e2e2e;
@@ -49,7 +61,6 @@ input[type=reset] {
     border: 1px #DADADA solid;
     padding: 5px 10px;
     border-radius: 2px;
-    outline: none;
 }
 
 input[type=reset]:hover {
@@ -61,6 +72,10 @@ input[type=reset]:hover {
 
 input[type=reset]:active {
     box-shadow: inset 1px 1px 1px #DFDFDF;
+}
+
+input[type=reset]:focus {
+    
 }
 
 ::-webkit-input-placeholder {
@@ -105,7 +120,7 @@ input[type=reset]:active {
 }
 
 #bring-it-on_btn:hover {
-    font-size: 200%;
+    font-size: 250%;
     transition: 0.4s;
     animation: shake 0.3s;
     animation-iteration-count: infinite;
@@ -141,6 +156,17 @@ input[type=reset]:active {
 
 #verb-rus_p {
     font-size: 200%;
+}
+
+span {
+    border-right: .05em solid;
+    animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
 }
 
 .verbs_input {
