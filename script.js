@@ -105,9 +105,7 @@ var verbs = (function () {
         if (this.readyState == 4 && this.status == 200) {
             _verbs = JSON.parse(this.responseText);
         } else {
-            _verbs = JSON.parse('[["1","say","said","said","говорить"],\
-                                        ["2","make","made","made","делать/производить"],\
-                                        ["3","go","went","gone","идти"  ]]');
+            _verbs = JSON.parse('[["1","null","null","null","Could not load table of irregular verbs :("]]');
         }
     };
     xmlhttp.open("GET", "verbs100array.json", true);
