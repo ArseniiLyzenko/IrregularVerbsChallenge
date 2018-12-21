@@ -4,6 +4,7 @@
  */
 
 const span = '<span aria-hidden="true"></span>';
+
 // how to make constant-global variables and declare them after page loading?!?!?
 var bringItOn_btn;
 var verbs_form;
@@ -22,6 +23,7 @@ var backToIntro_btn;
 var sectionOne_div;
 var sectionTwo_div;
 var sectionThree_div;
+var score_tabl;
 
 function onLoad() {
 
@@ -42,8 +44,10 @@ function onLoad() {
     sectionOne_div    = document.getElementById('section-one_div');
     sectionTwo_div    = document.getElementById('section-two_div');
     sectionThree_div  = document.getElementById('section-three_div');
+    score_tabl        = document.getElementById('score_tabl');
 
-    //ебучие хоткеи не пашут как надо, хотя в фаерфоксе всё работает
+    //--------------------------------hot-keys---------------------------------
+    //ебучие хоткеи не пашут как надо в chrome, хотя в firefox всё работает
 
     v1_input.addEventListener("keyup", function(event) {
         event.preventDefault();
@@ -76,7 +80,7 @@ function onLoad() {
         }
     });
 }
-//-----------------------------------------------------------------------------
+//----------------------------------function_closures--------------------------
 var verb = (function (newVerb) {
     var _verb;
     return {
@@ -95,9 +99,20 @@ var score = (function () {
 })();
 
 var verbs = (function () {
-    var _verbs = JSON.parse('[["1","say","said","said","говорить"],\
-                             ["2","make","made","made","делать/производить"],\
-                             ["3","go","went","gone","идти"  ]]');
+    var _verbs;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            _verbs = JSON.parse(this.responseText);
+        } else {
+            _verbs = JSON.parse('[["1","say","said","said","говорить"],\
+                                        ["2","make","made","made","делать/производить"],\
+                                        ["3","go","went","gone","идти"  ]]');
+        }
+    };
+    xmlhttp.open("GET", "verbs100array.json", true);
+    xmlhttp.send();
+
     return {
         get:function () {return _verbs;},
         length:function () {return _verbs.length;}
@@ -132,7 +147,7 @@ var newVerbsOnly = (function (verbID) {
         }
     };
 })();
-//-----------------------------------------------------------------------------
+//----------------------------------typing_animation---------------------------
 function typingAnimation (placeForTyping, text, typingSpeed) {
     function typeWriter(i) {
         console.log("typeWriter(" + i + ") : " + text.substring(0, i+1));
@@ -143,7 +158,7 @@ function typingAnimation (placeForTyping, text, typingSpeed) {
     }
 
     typeWriter(0);
-    console.log("typingAnimation(" + placeForTyping.id + ", " + text + ", "+typingSpeed + ")");
+    console.log("typingAnimation(" + placeForTyping.id + ", " + text + ", " + typingSpeed + ")");
 }
 
 function untypingAnimation (placeForTyping, typingSpeed) {
@@ -158,9 +173,9 @@ function untypingAnimation (placeForTyping, typingSpeed) {
 
     //var textLength = placeForTyping.innerHTML.length;
     untypeWriter(0);
-    console.log("untypingAnimation(" + placeForTyping.id +", "+typingSpeed + ")");
+    console.log("untypingAnimation(" + placeForTyping.id + ", " + typingSpeed + ")");
 }
-//-----------------------------------------------------------------------------
+//----------------------------------first_section------------------------------
 function bringItOn() {
 
     bringItOn_btn.disabled      = true;
@@ -183,7 +198,7 @@ function bringItOn() {
     scrollToGameAreaSector();
     setTimeout(function () {v1_input.focus()}, 700);
 }
-//-----------------------------------------------------------------------------
+//--------------------------------second_section-------------------------------
 function submitVerbs() {
     
     for (var i = 0; i < 3 ;i++) {
@@ -216,10 +231,12 @@ function submitVerbs() {
     untypingAnimation(rusVerb_p, 70);
     newVerbsOnly.setVerb();
     resetVerbInputs();
+
+    requestScoreTable();
 }
 
 function win() {
-    gameOver_p.innerHTML = "Поздравляшки!";
+    gameOver_p.innerHTML = "Well played!";
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
     scrollToGameOverSector();
@@ -235,6 +252,8 @@ function win() {
     name_input.disabled         = false;
     submitName_btn.disabled     = false;
     backToIntro_btn.disabled    = false;
+
+    requestScoreTable();
 }
 
 function giveUp() {
@@ -253,8 +272,10 @@ function giveUp() {
     name_input.disabled         = false;
     submitName_btn.disabled     = false;
     backToIntro_btn.disabled    = false;
+
+    requestScoreTable();
 }
-//-----------------------------------------------------------------------------
+//---------------------------------third_section-------------------------------
 function backToIntro() {
     score.reset();
     scrollToIntroSector();
@@ -283,4 +304,55 @@ function scrollToGameAreaSector(callback) {
 function scrollToGameOverSector(callback) {
     console.log("scrollToGameOverSector()");
     sectionThree_div.scrollIntoView({behavior: "smooth"});
+}
+//---------------------------------data_base-----------------------------------
+function submitNameAndScore() {
+    var obj, dbParam, xmlhttp, myObj, x, txt = "", i = 0;
+    obj = { "table":"Records", "name":name_input.value, "score":score.get() };
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            myObj = JSON.parse(this.responseText);
+            txt += "<thead><tr><td>#</td><td>Name</td><td>Score</td><td>Date</td></tr></thead><tbody>"
+            for (x in myObj) {
+                txt += "<tr>"
+                        + "<td>" + ++i + "</td>"
+                        + "<td>" + myObj[x].name + "</td>"
+                        + "<td>" + myObj[x].score + "</td>"
+                        + "<td>" + myObj[x].date + "</td>"
+                    + "</tr>";
+            }
+            i = 0;
+            txt += "</tbody>"
+            score_tabl.innerHTML = txt;
+        }
+    };
+    xmlhttp.open("POST", "json_score_tabl_db_post.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("x=" + dbParam);
+}
+
+function requestScoreTable() {
+    var xmlhttp, myObj, x, txt = "", i = 0;
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            myObj = JSON.parse(this.responseText);
+            txt += "<thead><tr><td>#</td><td>Name</td><td>Score</td><td>Date</td></tr></thead><tbody>"
+            for (x in myObj) {
+                txt += "<tr>"
+                        + "<td>" + ++i + "</td>"
+                        + "<td>" + myObj[x].name + "</td>"
+                        + "<td>" + myObj[x].score + "</td>"
+                        + "<td>" + myObj[x].date + "</td>"
+                    + "</tr>";
+            }
+            i = 0;
+            txt += "</tbody>"
+            score_tabl.innerHTML = txt;
+        }
+    };
+    xmlhttp.open("GET", "json_score_tabl_db_get.php", true);
+    xmlhttp.send();
 }

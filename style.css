@@ -26,9 +26,9 @@ input[type=text] {
     padding: 10px 1px;*/
 }
 
-input[type=text]:focus {
+/* input[type=text]:focus {
 
-}
+} */
 
 input[type=button] {
     font-size: 110%;
@@ -50,9 +50,9 @@ input[type=button]:active {
     box-shadow: inset 1px 1px 1px #DFDFDF;
 }
 
-input[type=button]:focus {
+/* input[type=button]:focus {
 
-}
+} */
 
 input[type=reset] {
     font-size: 110%;
@@ -74,9 +74,9 @@ input[type=reset]:active {
     box-shadow: inset 1px 1px 1px #DFDFDF;
 }
 
-input[type=reset]:focus {
+/* input[type=reset]:focus {
     
-}
+} */
 
 ::-webkit-input-placeholder {
     text-align: center;
@@ -122,7 +122,7 @@ input[type=reset]:focus {
 #bring-it-on_btn:hover {
     font-size: 250%;
     transition: 0.4s;
-    animation: shake 0.3s;
+    animation: shake 0.5s;
     animation-iteration-count: infinite;
 }
 
@@ -169,10 +169,10 @@ span {
     }
 }
 
-.verbs_input {
+/* .verbs_input {
 	/*width:300px;*/ 
 	
-}
+} */
 
 #give-up_btn {
     cursor: not-allowed;
@@ -214,7 +214,7 @@ span {
 }
 
 #score_p {
-    font-size: 200%;
+    font-size: 250%;
     margin: 0;
 }
 

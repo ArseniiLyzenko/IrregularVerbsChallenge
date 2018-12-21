@@ -44,25 +44,12 @@
 				<br>
 				<form action="#" autocomplete="off">
 					<input disabled id="name_input" type="text" name="playerName" placeholder="Your name">
-					<input disabled id="submit-name_btn" type="button" value="Submit" onclick="">
+					<input disabled id="submit-name_btn" type="button" value="Submit" onclick="submitNameAndScore()">
 					<input disabled id="back-to-intro_btn" type="button" value="Back" onclick="backToIntro()">
 				</form>
 				<br>
-				<table style="margin:auto;">
-					<thead>
-						<tr>
-							<td>#</td>
-							<td>Name</td>
-							<td>Score</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Elon Musk</td>
-							<td>99</td>
-						</tr>
-					</tbody>
+				<table id="score_tabl" style="margin:auto;">
+					
 				</table>
 			</div>
 		</div>
