@@ -23,7 +23,9 @@ var backToIntro_btn;
 var sectionOne_div;
 var sectionTwo_div;
 var sectionThree_div;
-var score_tabl;
+var scoreTable_div;
+//var score_table;
+//var score_table_body;
 
 function onLoad() {
 
@@ -44,7 +46,9 @@ function onLoad() {
     sectionOne_div    = document.getElementById('section-one_div');
     sectionTwo_div    = document.getElementById('section-two_div');
     sectionThree_div  = document.getElementById('section-three_div');
-    score_tabl        = document.getElementById('score_tabl');
+    scoreTable_div    = document.getElementById('score-table_div');
+    //score_table       = document.getElementById('score_table');
+    //score_table_body  = document.getElementById('score_table_body');
 
     //--------------------------------hot-keys---------------------------------
     //ебучие хоткеи не пашут как надо в chrome, хотя в firefox всё работает
@@ -229,12 +233,12 @@ function submitVerbs() {
     untypingAnimation(rusVerb_p, 70);
     newVerbsOnly.setVerb();
     resetVerbInputs();
-
-    requestScoreTable();
 }
 
 function win() {
-    gameOver_p.innerHTML = "Well played!";
+    requestScoreTable();
+
+    gameOver_p.innerHTML = "Well Played!";
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
     scrollToGameOverSector();
@@ -250,11 +254,12 @@ function win() {
     name_input.disabled         = false;
     submitName_btn.disabled     = false;
     backToIntro_btn.disabled    = false;
-
-    requestScoreTable();
 }
 
 function giveUp() {
+    requestScoreTable();
+
+    gameOver_p.innerHTML = "Game Over";
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
     scrollToGameOverSector();
@@ -270,8 +275,6 @@ function giveUp() {
     name_input.disabled         = false;
     submitName_btn.disabled     = false;
     backToIntro_btn.disabled    = false;
-
-    requestScoreTable();
 }
 //---------------------------------third_section-------------------------------
 function backToIntro() {
@@ -305,52 +308,69 @@ function scrollToGameOverSector(callback) {
 }
 //---------------------------------data_base-----------------------------------
 function submitNameAndScore() {
-    var obj, dbParam, xmlhttp, myObj, x, txt = "", i = 0;
-    obj = { "table":"Records", "name":name_input.value, "score":score.get() };
-    dbParam = JSON.stringify(obj);
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            myObj = JSON.parse(this.responseText);
-            txt += "<thead><tr><td>#</td><td>Name</td><td>Score</td><td>Date</td></tr></thead><tbody>"
-            for (x in myObj) {
-                txt += "<tr>"
-                        + "<td>" + ++i + "</td>"
-                        + "<td>" + myObj[x].name + "</td>"
-                        + "<td>" + myObj[x].score + "</td>"
-                        + "<td>" + myObj[x].date + "</td>"
-                    + "</tr>";
-            }
-            i = 0;
-            txt += "</tbody>"
-            score_tabl.innerHTML = txt;
-        }
-    };
+    var queryParams_obj = {}, dbParams_json, xmlhttp;
+    queryParams_obj = { "name":name_input.value.trim(), "score":score.get() };
+    dbParams_json = JSON.stringify(queryParams_obj);
+    xmlhttp = xmlhttp_();
     xmlhttp.open("POST", "json_score_tabl_db_post.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("x=" + dbParam);
+    xmlhttp.send("dbParams_json=" + dbParams_json);
 }
 
 function requestScoreTable() {
-    var xmlhttp, myObj, x, txt = "", i = 0;
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            myObj = JSON.parse(this.responseText);
-            txt += "<thead><tr><td>#</td><td>Name</td><td>Score</td><td>Date</td></tr></thead><tbody>"
-            for (x in myObj) {
-                txt += "<tr>"
-                        + "<td>" + ++i + "</td>"
-                        + "<td>" + myObj[x].name + "</td>"
-                        + "<td>" + myObj[x].score + "</td>"
-                        + "<td>" + myObj[x].date + "</td>"
-                    + "</tr>";
-            }
-            i = 0;
-            txt += "</tbody>"
-            score_tabl.innerHTML = txt;
-        }
-    };
+    var xmlhttp;
+    xmlhttp = xmlhttp_();
     xmlhttp.open("GET", "json_score_tabl_db_get.php", true);
     xmlhttp.send();
+}
+
+function xmlhttp_() {
+    var resultQuery_obj;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        console.log("readyState = " + this.readyState);
+        console.log("status = " + this.status);
+        if (this.readyState == 4 && this.status == 200) {
+            resultQuery_obj = JSON.parse(this.responseText);
+            
+            scoreTable_div.innerHTML = buildScoreTable();
+        } else if (this.readyState == 4 && this.status != 200) {
+            scoreTable_div.innerHTML = "<p>Could not load table of recors :(</p>";
+        }
+    };
+    return xmlhttp;
+
+    function buildScoreTable() {    
+        var iterator;
+        var rowNumScoreTable = 0;
+        var names = [];
+        var table = "<table id='score_table'>\
+                    <thead>\
+                        <tr>\
+                            <th>#</th>\
+                            <th>Name</th>\
+                            <th>Score</th>\
+                            <th>Date</th>\
+                        </tr>\
+                    </thead>\
+                    <tbody id='score_table_body'>";
+    
+        for (iterator in resultQuery_obj) {
+            console.log(names);
+            console.log("resultQuery_obj[iterator].name = " + resultQuery_obj[iterator].name);
+            if (names.find(checkDuplicateNames)) {continue;}
+            table += "<tr>"
+                    + "<td>" + ++rowNumScoreTable + "</td>"
+                    + "<td>" + resultQuery_obj[iterator].name + "</td>"
+                    + "<td>" + resultQuery_obj[iterator].score + "</td>"
+                    + "<td>" + resultQuery_obj[iterator].date + "</td>"
+                + "</tr>";
+            names.push(resultQuery_obj[iterator].name);
+        }
+        return table;
+
+        function checkDuplicateNames(name) {
+            return name == resultQuery_obj[iterator].name;
+        }
+    }
 }

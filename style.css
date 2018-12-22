@@ -10,6 +10,12 @@ html,body{
     text-align: center;
 }*/
 
+h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 300%;
+}
+
 input[type=text] {
     width: 200px;
     text-align: center;
@@ -170,7 +176,7 @@ span {
 }
 
 /* .verbs_input {
-	/*width:300px;*/ 
+	/*width:300px;
 	
 } */
 
@@ -183,6 +189,7 @@ span {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
     /*
     display: inline;
     background-color: rgba(0, 0, 0, 0.9);
@@ -221,4 +228,31 @@ span {
 #name_input {
     padding-top: 2px;
     border-width: 1px;
+}
+
+#score-table_div {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.19);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#score_table {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    display: block;
+    overflow-y: auto;
+    max-height: 244px;
+}
+
+td, th {
+    padding-right: 10px;
+}
+/*
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
 }
