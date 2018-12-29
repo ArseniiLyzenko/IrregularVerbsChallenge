@@ -151,13 +151,6 @@ input[type=reset]:active {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /*position: fixed; /* Stay in place */
-    /*z-index: 1; /* Sit on top */
-    /*left: 0;
-    top: 0;
-    overflow-y: hidden; /* Disable horizontal scroll */
-    /*transition: 1s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
-    /*background-color: white;*/
 }
 
 #verb-rus_p {
@@ -174,11 +167,6 @@ span {
         border-color: transparent;
     }
 }
-
-/* .verbs_input {
-	/*width:300px;
-	
-} */
 
 #give-up_btn {
     cursor: not-allowed;
