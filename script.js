@@ -131,7 +131,6 @@ var newVerbsOnly = (function (verbID) {
         setVerb:function (verbID) {
             this.pickVerb(this.randVerbID());
             console.log("picked_verb_id: " + verb.get()[0]);
-            //rusVerb_p.innerHTML = verb.get()[4];
             setTimeout(function() {
                 typingAnimation(rusVerb_p, verb.get()[4], 100);},
                 (rusVerb_p.innerHTML.length - span.length) * 100
@@ -173,7 +172,6 @@ function untypingAnimation (placeForTyping, typingSpeed) {
         }
     }
 
-    //var textLength = placeForTyping.innerHTML.length;
     untypeWriter(0);
     console.log("untypingAnimation(" + placeForTyping.id + ", " + typingSpeed + ")");
 }
@@ -197,8 +195,9 @@ function bringItOn() {
         setTimeout(function (){untypingAnimation(rusVerb_p, 70);}, 2000);
         setTimeout(function (){newVerbsOnly.setVerb()}, 2000);
     }
+
     scrollToGameAreaSector();
-    setTimeout(function () {v1_input.focus()}, 700);
+    //setTimeout(function () {v1_input.focus()}, 700);
 }
 //--------------------------------second_section-------------------------------
 function submitVerbs() {
@@ -241,8 +240,6 @@ function win() {
     gameOver_p.innerHTML = "Well Played!";
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
-    scrollToGameOverSector();
-    setTimeout(function () {name_input.focus()}, 700);
     
     v1_input.disabled           = true;
     v2_input.disabled           = true;
@@ -254,6 +251,9 @@ function win() {
     name_input.disabled         = false;
     submitName_btn.disabled     = false;
     backToIntro_btn.disabled    = false;
+
+    scrollToGameOverSector();
+    //setTimeout(function () {name_input.focus()}, 700);
 }
 
 function giveUp() {
@@ -262,8 +262,6 @@ function giveUp() {
     gameOver_p.innerHTML = "Game Over";
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
-    scrollToGameOverSector();
-    setTimeout(function () {name_input.focus()}, 700);
 
     v1_input.disabled           = true;
     v2_input.disabled           = true;
@@ -275,6 +273,9 @@ function giveUp() {
     name_input.disabled         = false;
     submitName_btn.disabled     = false;
     backToIntro_btn.disabled    = false;
+
+    scrollToGameOverSector();
+    //setTimeout(function () {name_input.focus()}, 700);
 }
 //---------------------------------third_section-------------------------------
 function backToIntro() {
@@ -311,6 +312,7 @@ function submitNameAndScore() {
     var queryParams_obj = {}, dbParams_json, xmlhttp;
     queryParams_obj = { "name":name_input.value.trim(), "score":score.get() };
     dbParams_json = JSON.stringify(queryParams_obj);
+    console.log("dbParams_json = " + dbParams_json);
     xmlhttp = xmlhttp_();
     xmlhttp.open("POST", "json_score_tabl_db_post.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -331,8 +333,8 @@ function xmlhttp_() {
         console.log("readyState = " + this.readyState);
         console.log("status = " + this.status);
         if (this.readyState == 4 && this.status == 200) {
+            console.log("responseText = " + this.responseText);
             resultQuery_obj = JSON.parse(this.responseText);
-            
             scoreTable_div.innerHTML = buildScoreTable();
         } else if (this.readyState == 4 && this.status != 200) {
             scoreTable_div.innerHTML = "<p>Could not load table of recors :(</p>";
@@ -340,7 +342,7 @@ function xmlhttp_() {
     };
     return xmlhttp;
 
-    function buildScoreTable() {    
+    function buildScoreTable() {
         var iterator;
         var rowNumScoreTable = 0;
         var names = [];
