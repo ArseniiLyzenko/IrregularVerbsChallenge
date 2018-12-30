@@ -6,10 +6,6 @@ html,body{
     color: #2e2e2e;
 }
 
-/*#main {
-    text-align: center;
-}*/
-
 h1 {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -23,13 +19,7 @@ input[type=text] {
 	font-size:1em; 
 	color:#333; 
 	background: #fff; 
-	border:solid 1px #d9d9d9; 
-    
-    /*font: inherit;
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
-    border: 0;
-    outline: 0;
-    padding: 10px 1px;*/
+	border:solid 1px #d9d9d9;
 }
 
 /* input[type=text]:focus {
@@ -99,13 +89,6 @@ input[type=reset]:active {
 :-ms-input-placeholder {  
     text-align: center; 
 }
-
-/*@media screen and (max-width: 485px) {
-    .verbInput {
-        display: block;
-        margin: auto;
-    }
-}*/
 
 .sections {
     height: 100%;
@@ -178,29 +161,6 @@ span {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    /*
-    display: inline;
-    background-color: rgba(0, 0, 0, 0.9);
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    color: white;
-    text-align: center;
-    padding-top: 15%;
-    */
-    /*height: 0;
-    width: 100%;
-    position: fixed; /* Stay in place */
-    /*z-index: 1; /* Sit on top */
-    /*left: 0;
-    top: 0;
-    background-color: rgb(0,0,0); /* Black fallback color */
-    /*background-color: rgba(0,0,0, 0.7); /* Black w/opacity */
-    /*overflow-y: hidden; /* Disable horizontal scroll */
-    /*transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
-    /*color: white;*/
 }
 
 #game-over_p {
@@ -236,11 +196,4 @@ span {
 
 td, th {
     padding-right: 10px;
-}
-/*
-table {
-    display: table;
-    border-collapse: separate;
-    border-spacing: 2px;
-    border-color: grey;
 }
