@@ -307,7 +307,7 @@ function scrollToGameOverSector(callback) {
     console.log("scrollToGameOverSector()");
     sectionThree_div.scrollIntoView({behavior: "smooth"});
 }
-//---------------------------------data_base-----------------------------------
+//-------------------------asynchronous_requests_&_data_base-------------------
 function submitNameAndScore() {
     var queryParams_obj = {}, dbParams_json, xmlhttp;
     queryParams_obj = { "name":name_input.value.trim(), "score":score.get() };
