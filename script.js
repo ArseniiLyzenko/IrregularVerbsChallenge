@@ -4,6 +4,10 @@
  */
 
 const span = '<span aria-hidden="true"></span>';
+const couldNotLoad = '[["1","null","null","null","Could not load the table of irregular verbs :("]]';
+const irregularVerbsJsonFile = "verbs100array.json";
+const gameOver = "Game Over";
+const wellPlayed = "Well Played!";
 
 // how to make constant-global variables and declare them after page loading?!?!?
 var bringItOn_btn;
@@ -109,10 +113,10 @@ var verbs = (function () {
         if (this.readyState == 4 && this.status == 200) {
             _verbs = JSON.parse(this.responseText);
         } else {
-            _verbs = JSON.parse('[["1","null","null","null","Could not load table of irregular verbs :("]]');
+            _verbs = JSON.parse(couldNotLoad);
         }
     };
-    xmlhttp.open("GET", "verbs100array.json", true);
+    xmlhttp.open("GET", irregularVerbsJsonFile, true);
     xmlhttp.send();
 
     return {
@@ -237,7 +241,7 @@ function submitVerbs() {
 function win() {
     requestScoreTable();
 
-    gameOver_p.innerHTML = "Well Played!";
+    gameOver_p.innerHTML = wellPlayed;
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
     
@@ -259,7 +263,7 @@ function win() {
 function giveUp() {
     requestScoreTable();
 
-    gameOver_p.innerHTML = "Game Over";
+    gameOver_p.innerHTML = gameOver;
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
 
