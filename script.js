@@ -201,6 +201,7 @@ function bringItOn() {
     }
 
     scrollToGameAreaSector();
+    setTimeout(function () {sectionOne_div.style.display = "none"}, 700);
     //setTimeout(function () {v1_input.focus()}, 700);
 }
 //--------------------------------second_section-------------------------------
@@ -257,6 +258,7 @@ function win() {
     backToIntro_btn.disabled    = false;
 
     scrollToGameOverSector();
+    setTimeout(function () {sectionTwo_div.style.display = "none"}, 700);
     //setTimeout(function () {name_input.focus()}, 700);
 }
 
@@ -279,12 +281,14 @@ function giveUp() {
     backToIntro_btn.disabled    = false;
 
     scrollToGameOverSector();
+    setTimeout(function () {sectionTwo_div.style.display = "none"}, 700);
     //setTimeout(function () {name_input.focus()}, 700);
 }
 //---------------------------------third_section-------------------------------
 function backToIntro() {
     score.reset();
     scrollToIntroSector();
+    setTimeout(function () {sectionThree_div.style.display = "none"}, 700);
 
     bringItOn_btn.disabled      = false;
 
@@ -296,19 +300,22 @@ function backToIntro() {
 function resetVerbInputs() {
     reset_btn.click();
 }
-//-----------------------------------------------------------------------------
+//------------------------Scrolling through the sections---------------------------
 function scrollToIntroSector(callback) {
     console.log("scrollToIntroSector()");
+    sectionOne_div.style.display = "block";
     sectionOne_div.scrollIntoView({behavior: "smooth"});
 }
 
 function scrollToGameAreaSector(callback) {
     console.log("scrollToGameAreaSector()");
+    sectionTwo_div.style.display = "block";
     sectionTwo_div.scrollIntoView({behavior: "smooth"});
 }
 
 function scrollToGameOverSector(callback) {
     console.log("scrollToGameOverSector()");
+    sectionThree_div.style.display = "block";
     sectionThree_div.scrollIntoView({behavior: "smooth"});
 }
 //-------------------------asynchronous_requests_&_data_base-------------------
