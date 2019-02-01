@@ -111,12 +111,15 @@ var verbs = (function () {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            _verbs = JSON.parse(this.responseText);
+            //_verbs = JSON.parse(this.responseText);
+            _verbs = JSON.parse('[["1","say","said","said","говорить"],\
+                                  ["2","make","made","made","делать/производить"],\
+                                  ["3","go","went","gone","идти"  ]]');
         } else {
-            // _verbs = JSON.parse('[["1","say","said","said","говорить"],\
-            //                       ["2","make","made","made","делать/производить"],\
-            //                       ["3","go","went","gone","идти"  ]]');
             _verbs = JSON.parse(couldNotLoad);
+            _verbs = JSON.parse('[["1","say","said","said","говорить"],\
+                                  ["2","make","made","made","делать/производить"],\
+                                  ["3","go","went","gone","идти"  ]]');
         }
     };
     xmlhttp.open("GET", irregularVerbsJsonFile, true);
@@ -204,7 +207,10 @@ function bringItOn() {
     }
 
     scrollToGameAreaSector();
-    setTimeout(function () {sectionOne_div.style.display = "none"}, 700);
+    //setTimeout(function () {scrollToGameAreaSector()}, 1000);
+    //sectionOne_div.style.display = "none";
+    //setTimeout(function () {sectionOne_div.style.display = "none"}, 700);
+    
     //setTimeout(function () {v1_input.focus()}, 700);
 }
 //--------------------------------second_section-------------------------------
@@ -225,7 +231,7 @@ function submitVerbs() {
 
     for (var i = 0; i < 3 ;i++) {
 
-        if (verb.get()[i+1] != verbs_form.elements[i].value.toLowerCase()) {
+        if (verb.get()[i+1] != verbs_form.elements[i].value.toLowerCase().trim()) {
             giveUp();
             return;
         }
@@ -243,6 +249,7 @@ function submitVerbs() {
 }
 
 function win() {
+    console.log("win()");
     requestScoreTable();
 
     gameOver_p.innerHTML = wellPlayed;
@@ -261,11 +268,13 @@ function win() {
     backToIntro_btn.disabled    = false;
 
     scrollToGameOverSector();
-    setTimeout(function () {sectionTwo_div.style.display = "none"}, 700);
+    //setTimeout(function () {sectionTwo_div.style.display = "none"}, 700);
+    //sectionTwo_div.style.display = "none";
     //setTimeout(function () {name_input.focus()}, 700);
 }
 
 function giveUp() {
+    console.log("giveUp()");
     requestScoreTable();
 
     gameOver_p.innerHTML = gameOver;
@@ -284,14 +293,16 @@ function giveUp() {
     backToIntro_btn.disabled    = false;
 
     scrollToGameOverSector();
-    setTimeout(function () {sectionTwo_div.style.display = "none"}, 700);
+    //setTimeout(function () {sectionTwo_div.style.display = "none"}, 700);
+    //sectionTwo_div.style.display = "none";
     //setTimeout(function () {name_input.focus()}, 700);
 }
 //---------------------------------third_section-------------------------------
 function backToIntro() {
     score.reset();
     scrollToIntroSector();
-    setTimeout(function () {sectionThree_div.style.display = "none"}, 700);
+    //setTimeout(function () {sectionThree_div.style.display = "none"}, 700);
+    //sectionThree_div.style.display = "none";
 
     bringItOn_btn.disabled      = false;
 
@@ -303,28 +314,30 @@ function backToIntro() {
 function resetVerbInputs() {
     reset_btn.click();
 }
-//------------------------Scrolling through the sections---------------------------
+//------------------------Scrolling through the sections-----------------------
 function scrollToIntroSector(callback) {
     console.log("scrollToIntroSector()");
-    sectionOne_div.style.display = "block";
+    //sectionOne_div.style.display = "block";
     sectionOne_div.scrollIntoView({behavior: "smooth"});
 }
 
 function scrollToGameAreaSector(callback) {
     console.log("scrollToGameAreaSector()");
-    sectionTwo_div.style.display = "block";
+    //sectionTwo_div.style.display = "block";
     sectionTwo_div.scrollIntoView({behavior: "smooth"});
 }
 
 function scrollToGameOverSector(callback) {
     console.log("scrollToGameOverSector()");
-    sectionThree_div.style.display = "block";
+    //sectionThree_div.style.display = "block";
     sectionThree_div.scrollIntoView({behavior: "smooth"});
 }
 //-------------------------asynchronous_requests_&_data_base-------------------
 function submitNameAndScore() {
     var queryParams_obj = {}, dbParams_json, xmlhttp;
-    queryParams_obj = { "name":name_input.value.trim(), "score":score.get() };
+    queryParams_obj = { "name":name_input.value.trim(), //removes whitespace from both sides of the string
+                        "score":score.get()
+                      };
     dbParams_json = JSON.stringify(queryParams_obj);
     console.log("dbParams_json = " + dbParams_json);
     xmlhttp = xmlhttp_();
