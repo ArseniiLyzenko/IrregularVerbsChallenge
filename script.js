@@ -113,6 +113,9 @@ var verbs = (function () {
         if (this.readyState == 4 && this.status == 200) {
             _verbs = JSON.parse(this.responseText);
         } else {
+            // _verbs = JSON.parse('[["1","say","said","said","говорить"],\
+            //                       ["2","make","made","made","делать/производить"],\
+            //                       ["3","go","went","gone","идти"  ]]');
             _verbs = JSON.parse(couldNotLoad);
         }
     };
@@ -222,7 +225,7 @@ function submitVerbs() {
 
     for (var i = 0; i < 3 ;i++) {
 
-        if (verb.get()[i+1] != verbs_form.elements[i].value) {
+        if (verb.get()[i+1] != verbs_form.elements[i].value.toLowerCase()) {
             giveUp();
             return;
         }
