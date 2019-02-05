@@ -102,7 +102,7 @@ input[type=reset]:active {
     transform: translate(-50%, -50%);
 }
 
- #bring-it-on_btn {
+#bring-it-on_btn {
     animation: shake 1.5s;
     animation-iteration-count: infinite;
     transition: 0.4s;
@@ -197,3 +197,8 @@ span {
 td, th {
     padding-right: 10px;
 }
+
+/* Smartphones (portrait and landscape) ----------- */
+/* @media only screen and (min-width : 320px) and (max-width : 480px) {
+    Styles 
+}*/

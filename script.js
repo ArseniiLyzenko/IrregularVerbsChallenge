@@ -1,6 +1,6 @@
 "use strict";
 /**
- * 
+ *
  */
 
 const span = '<span aria-hidden="true"></span>';
@@ -108,20 +108,22 @@ var score = (function () {
 
 var verbs = (function () {
     var _verbs;
+    
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            //_verbs = JSON.parse(this.responseText);
-            _verbs = JSON.parse('[["1","say","said","said","говорить"],\
+            _verbs = JSON.parse(this.responseText);
+            /*_verbs = JSON.parse('[["1","say","said","said","говорить"],\
                                   ["2","make","made","made","делать/производить"],\
-                                  ["3","go","went","gone","идти"  ]]');
+                                  ["3","go","went","gone","идти"  ]]');*/
         } else {
             _verbs = JSON.parse(couldNotLoad);
-            _verbs = JSON.parse('[["1","say","said","said","говорить"],\
+            /*_verbs = JSON.parse('[["1","say","said","said","говорить"],\
                                   ["2","make","made","made","делать/производить"],\
-                                  ["3","go","went","gone","идти"  ]]');
+                                  ["3","go","went","gone","идти"  ]]');*/
         }
     };
+
     xmlhttp.open("GET", irregularVerbsJsonFile, true);
     xmlhttp.send();
 
@@ -145,11 +147,11 @@ var newVerbsOnly = (function (verbID) {
                 typingAnimation(rusVerb_p, verb.get()[4], 100);},
                 (rusVerb_p.innerHTML.length - span.length) * 100
             );
-            
+
         },
         pickVerb:function (verbID) {
             var newVerb = newVerbsOnly.get();
-        
+
             verb.set(newVerbsOnly.get()[verbID]);
             newVerbsOnly.splice(verbID, 1);
         },
@@ -160,6 +162,8 @@ var newVerbsOnly = (function (verbID) {
 })();
 //----------------------------------typing_animation---------------------------
 function typingAnimation (placeForTyping, text, typingSpeed) {
+    console.log("typingAnimation(" + placeForTyping.id + ", " + text + ", " + typingSpeed + ")");
+
     function typeWriter(i) {
         console.log("typeWriter(" + i + ") : " + text.substring(0, i+1));
         if (i < (text.length)) {
@@ -169,10 +173,11 @@ function typingAnimation (placeForTyping, text, typingSpeed) {
     }
 
     typeWriter(0);
-    console.log("typingAnimation(" + placeForTyping.id + ", " + text + ", " + typingSpeed + ")");
 }
 
 function untypingAnimation (placeForTyping, typingSpeed) {
+    console.log("untypingAnimation(" + placeForTyping.id + ", " + typingSpeed + ")");
+
     function untypeWriter() {
         var text = placeForTyping.innerHTML.substring(0, placeForTyping.innerHTML.length - span.length - 1)
         console.log("untypeWriter(): " + text);
@@ -183,7 +188,6 @@ function untypingAnimation (placeForTyping, typingSpeed) {
     }
 
     untypeWriter(0);
-    console.log("untypingAnimation(" + placeForTyping.id + ", " + typingSpeed + ")");
 }
 //----------------------------------first_section------------------------------
 function bringItOn() {
@@ -210,12 +214,12 @@ function bringItOn() {
     //setTimeout(function () {scrollToGameAreaSector()}, 1000);
     //sectionOne_div.style.display = "none";
     //setTimeout(function () {sectionOne_div.style.display = "none"}, 700);
-    
+
     //setTimeout(function () {v1_input.focus()}, 700);
 }
 //--------------------------------second_section-------------------------------
 function submitVerbs() {
-    
+
     for (var i = 0; i < 3 ;i++) {
 
         if (verbs_form.elements[i].validity.valueMissing) {
@@ -235,7 +239,7 @@ function submitVerbs() {
             giveUp();
             return;
         }
-        
+
     }
     score.plusPlus();
     if (newVerbsOnly.length() == 0) {
@@ -255,7 +259,7 @@ function win() {
     gameOver_p.innerHTML = wellPlayed;
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
-    
+
     v1_input.disabled           = true;
     v2_input.disabled           = true;
     v3_input.disabled           = true;
@@ -383,7 +387,7 @@ function xmlhttp_() {
                         </tr>\
                     </thead>\
                     <tbody id='score_table_body'>";
-    
+
         for (iterator in resultQuery_obj) {
             console.log(names);
             console.log("resultQuery_obj[iterator].name = " + resultQuery_obj[iterator].name);
