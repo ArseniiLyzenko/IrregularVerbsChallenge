@@ -1,7 +1,8 @@
-html,body{
+html,
+body {
     font-family: Arial, Helvetica, sans-serif;
     height: 100%;
-    text-align: center;
+    /* text-align: center; */
     overflow: hidden;
     color: #2e2e2e;
 }
@@ -12,96 +13,16 @@ h1 {
     font-size: 300%;
 }
 
-input[type=text] {
-    width: 200px;
-    text-align: center;
-	line-height:170%;
-	font-size:1em; 
-	color:#333; 
-	background: #fff; 
-	border:solid 1px #d9d9d9;
-}
-
-/* input[type=text]:focus {
-
-} */
-
-input[type=button] {
-    font-size: 110%;
-    color: #2e2e2e;
-    background: #F3F3F3;
-    border: 1px #DADADA solid;
-    padding: 5px 10px;
-    border-radius: 2px;
-}
-
-input[type=button]:hover {
-    border: 1px #C6C6C6 solid;
-    box-shadow: 1px 1px 1px #EAEAEA;
-    color: #333333;
-    background: #F7F7F7;
-}
-
-input[type=button]:active {
-    box-shadow: inset 1px 1px 1px #DFDFDF;
-}
-
-/* input[type=button]:focus {
-
-} */
-
-input[type=reset] {
-    font-size: 110%;
-    color: #2e2e2e;
-    background: #F3F3F3;
-    border: 1px #DADADA solid;
-    padding: 5px 10px;
-    border-radius: 2px;
-}
-
-input[type=reset]:hover {
-    border: 1px #C6C6C6 solid;
-    box-shadow: 1px 1px 1px #EAEAEA;
-    color: #333333;
-    background: #F7F7F7;
-}
-
-input[type=reset]:active {
-    box-shadow: inset 1px 1px 1px #DFDFDF;
-}
-
-/* input[type=reset]:focus {
-    
-} */
-
-::-webkit-input-placeholder {
-    text-align: center;
-}
- 
-:-moz-placeholder { /* Firefox 18- */
-    text-align: center;  
-}
- 
-::-moz-placeholder {  /* Firefox 19+ */
-    text-align: center;  
-}
- 
-:-ms-input-placeholder {  
-    text-align: center; 
-}
-
 .sections {
-    height: 100%;
-    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
-
-#intro_div {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
+/* ========================================================================= */
+/*                                Section 1                                  */
 #bring-it-on_btn {
     animation: shake 1.5s;
     animation-iteration-count: infinite;
@@ -128,20 +49,14 @@ input[type=reset]:active {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
-
-#game-area_div {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
+/* ========================================================================= */
+/*                                    Section 2                              */
 #verb-rus_p {
     font-size: 200%;
 }
 
-span {
-    border-right: .05em solid;
+#carriage {
+    border-left: 2px solid;
     animation: caret 1s steps(1) infinite;
 }
 
@@ -151,18 +66,88 @@ span {
     }
 }
 
+#verbs_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+input[type=text] {
+    width: 200px;
+    text-align: center;
+	line-height: 200%;
+	font-size: 1em; 
+	color: #333; 
+	background: #fff; 
+    border: solid 1px #d9d9d9;
+    margin-bottom: 4px;
+}
+
+/* input[type=text]:focus {
+
+} */
+
+#input-btns_div {
+    margin: 20px;
+}
+
+input[type=button],
+     [type=reset] {
+    font-size: 130%;
+    color: #2e2e2e;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+}
+
+#input-btns_div
+input[type=button],
+     [type=reset] {
+    width: 90px;
+}
+
+input[type=button]:hover,
+     [type=reset]:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+input[type=button]:active,
+     [type=reset]:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;
+}
+
+/* input[type=button]:focus,
+     [type=reset]:focus {
+
+} */
+
+:-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+}
+
+:-ms-input-placeholder {  
+    text-align: center; 
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
 #give-up_btn {
     cursor: not-allowed;
 }
-
-#game-over_div {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-}
-
+/* ========================================================================= */
+/*                                    Section 3                              */
 #game-over_p {
     font-size: 300%;
     margin: 0;
@@ -170,7 +155,14 @@ span {
 
 #score_p {
     font-size: 250%;
-    margin: 0;
+    margin: 10px;
+}
+
+#name_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
 }
 
 #name_input {
@@ -178,11 +170,20 @@ span {
     border-width: 1px;
 }
 
+#name-btns_div {
+    margin-left: 4px;
+}
+
+#name-btns_div
+input {
+    padding: 5px 10px 6px 10px;
+}
+
 #score-table_div {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.19);
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+    /*position: absolute;----------------------------------------!----------------------------------*/
+    /* left: 50%;
+    transform: translate(-50%); */
 }
 
 #score_table {
@@ -194,7 +195,8 @@ span {
     max-height: 244px;
 }
 
-td, th {
+td,
+th {
     padding-right: 10px;
 }
 
@@ -202,3 +204,7 @@ td, th {
 /* @media only screen and (min-width : 320px) and (max-width : 480px) {
     Styles 
 }*/
+
+/* *{
+	border:1px dotted blue;
+} */

@@ -3,15 +3,19 @@
  *
  */
 
-const span = '<span aria-hidden="true"></span>';
+const span = '<span id="carriage">&nbsp;</span>'; // The &nbsp (non-breaking space or just whitespace) need to fix unexpected behavior of span tag
 const couldNotLoad = '[["1","null","null","null","Could not load the table of irregular verbs :("]]';
 const irregularVerbsJsonFile = "verbs100array.json";
 const gameOver = "Game Over";
 const wellPlayed = "Well Played!";
 
-// how to make constant-global variables and declare them after page loading?!?!?
+const typingSpeed = 100;
+const untypingSpeed = 70;
+
+// how to make constant-global variables and declare them after page loading?!
 var bringItOn_btn;
 var verbs_form;
+var rusVerb_div;
 var rusVerb_p;
 var v1_input;
 var v2_input;
@@ -35,6 +39,7 @@ function onLoad() {
 
     bringItOn_btn     = document.getElementById("bring-it-on_btn");
     verbs_form        = document.getElementById("verbs_form");
+    rusVerb_div       = document.getElementById("rus-verb_div");
     rusVerb_p         = document.getElementById("verb-rus_p");
     v1_input          = document.getElementById("v1_input");
     v2_input          = document.getElementById("v2_input");
@@ -47,68 +52,68 @@ function onLoad() {
     name_input        = document.getElementById("name_input");
     submitName_btn    = document.getElementById("submit-name_btn");
     backToIntro_btn   = document.getElementById("back-to-intro_btn");
-    sectionOne_div    = document.getElementById('section-one_div');
-    sectionTwo_div    = document.getElementById('section-two_div');
-    sectionThree_div  = document.getElementById('section-three_div');
+    sectionOne_div    = document.getElementById('section-one_section');
+    sectionTwo_div    = document.getElementById('section-two_section');
+    sectionThree_div  = document.getElementById('section-three_section');
     scoreTable_div    = document.getElementById('score-table_div');
     //score_table       = document.getElementById('score_table');
     //score_table_body  = document.getElementById('score_table_body');
 
-    //--------------------------------hot-keys---------------------------------
+    //=============================hot-keys====================================
     //ебучие хоткеи не пашут как надо в chrome, хотя в firefox всё работает
 
-    v1_input.addEventListener("keyup", function(event) {
-        event.preventDefault();
-        if (event.keyCode === 13) {
-            v1_input.focus();
-            submitVerbs_btn.click();
-        }
-    });
+    // v1_input.addEventListener("keyup", function(event) {
+    //     event.preventDefault();
+    //     if (event.keyCode === 13) {
+    //         v1_input.focus();
+    //         submitVerbs_btn.click();
+    //     }
+    // });
 
-    v2_input.addEventListener("keyup", function(event) {
-        event.preventDefault();
-        if (event.keyCode === 13) {
-            v1_input.focus();
-            submitVerbs_btn.click();
-        }
-    });
+    // v2_input.addEventListener("keyup", function(event) {
+    //     event.preventDefault();
+    //     if (event.keyCode === 13) {
+    //         v1_input.focus();
+    //         submitVerbs_btn.click();
+    //     }
+    // });
 
-    v3_input.addEventListener("keyup", function(event) {
-        event.preventDefault();
-        if (event.keyCode === 13) {
-            v1_input.focus();
-            submitVerbs_btn.click();
-        }
-    });
+    // v3_input.addEventListener("keyup", function(event) {
+    //     event.preventDefault();
+    //     if (event.keyCode === 13) {
+    //         v1_input.focus();
+    //         submitVerbs_btn.click();
+    //     }
+    // });
 
-    name_input.addEventListener("keyup", function(event) {
-        event.preventDefault();
-        if (event.keyCode === 13) {
-            submitName_btn.click();
-        }
-    });
+    // name_input.addEventListener("keyup", function(event) {
+    //     event.preventDefault();
+    //     if (event.keyCode === 13) {
+    //         submitName_btn.click();
+    //     }
+    // });
 }
-//----------------------------------function_closures--------------------------
+//================================function_closures============================
 var verb = (function (newVerb) {
     var _verb;
     return {
-        get:function () {return _verb;},
-        set:function (newVerb) { _verb = newVerb;}
+        get: function () {return _verb;},
+        set: function (newVerb) { _verb = newVerb;}
     };
 })();
 
 var score = (function () {
     var _score = 0;
     return {
-        get:function () {return _score;},
-        plusPlus:function () {_score++; return;},
-        reset:function () {_score = 0;}
+        get: function () {return _score;},
+        plusPlus: function () {_score++; return;},
+        reset: function () {_score = 0;}
     };
 })();
 
 var verbs = (function () {
     var _verbs;
-    
+
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -128,41 +133,41 @@ var verbs = (function () {
     xmlhttp.send();
 
     return {
-        get:function () {return _verbs;},
-        length:function () {return _verbs.length;}
+        get: function () {return _verbs;},
+        length: function () {return _verbs.length;}
     };
 })();
 
 var newVerbsOnly = (function (verbID) {
     var _newVerbsOnly = verbs.get().slice();
     return {
-        get:function () {return _newVerbsOnly;},
-        reSet:function () {_newVerbsOnly = verbs.get().slice(); console.log("newVerbsOnly.reSet();")},
-        length:function () {return _newVerbsOnly.length;},
-        splice:function (verbID, param) {_newVerbsOnly.splice(verbID, param); return;},
-        setVerb:function (verbID) {
+        get: function () {return _newVerbsOnly;},
+        reSet: function () {_newVerbsOnly = verbs.get().slice(); console.log("newVerbsOnly.reSet();")},
+        length: function () {return _newVerbsOnly.length;},
+        splice: function (verbID, param) {_newVerbsOnly.splice(verbID, param); return;},
+        setVerb: function (verbID) {
             this.pickVerb(this.randVerbID());
             console.log("picked_verb_id: " + verb.get()[0]);
             setTimeout(function() {
-                typingAnimation(rusVerb_p, verb.get()[4], 100);},
+                typingAnimation(rusVerb_p, verb.get()[4], typingSpeed);},
                 (rusVerb_p.innerHTML.length - span.length) * 100
             );
 
         },
-        pickVerb:function (verbID) {
+        pickVerb: function (verbID) {
             var newVerb = newVerbsOnly.get();
 
             verb.set(newVerbsOnly.get()[verbID]);
             newVerbsOnly.splice(verbID, 1);
         },
-        randVerbID:function () {
+        randVerbID: function () {
             return Math.floor(Math.random() * newVerbsOnly.length());
         }
     };
 })();
 //----------------------------------typing_animation---------------------------
 function typingAnimation (placeForTyping, text, typingSpeed) {
-    console.log("typingAnimation(" + placeForTyping.id + ", " + text + ", " + typingSpeed + ")");
+    console.log("typingAnimation(" + placeForTyping.id + ", \"" + text + "\", " + typingSpeed + ")");
 
     function typeWriter(i) {
         console.log("typeWriter(" + i + ") : " + text.substring(0, i+1));
@@ -189,6 +194,10 @@ function untypingAnimation (placeForTyping, typingSpeed) {
 
     untypeWriter(0);
 }
+
+function isTypingSpaceClear(typingSpace) {
+    return typingSpace.innerHTML == span;
+}
 //----------------------------------first_section------------------------------
 function bringItOn() {
 
@@ -203,14 +212,16 @@ function bringItOn() {
 
     resetVerbInputs();
     newVerbsOnly.reSet();
-    if (rusVerb_p.innerHTML == span) {
+    
+    scrollToGameAreaSector();
+    
+    if (isTypingSpaceClear(rusVerb_p)) {
         setTimeout(function (){newVerbsOnly.setVerb()}, 1000);
     } else {
-        setTimeout(function (){untypingAnimation(rusVerb_p, 70);}, 2000);
-        setTimeout(function (){newVerbsOnly.setVerb()}, 2000);
+        setTimeout(function (){untypingAnimation(rusVerb_p, untypingSpeed);}, 2000); //wait for scrolling
+        setTimeout(function (){newVerbsOnly.setVerb()}, 2000); //wait for untyping animation
     }
 
-    scrollToGameAreaSector();
     //setTimeout(function () {scrollToGameAreaSector()}, 1000);
     //sectionOne_div.style.display = "none";
     //setTimeout(function () {sectionOne_div.style.display = "none"}, 700);
@@ -247,7 +258,7 @@ function submitVerbs() {
         win();
         return;
     }
-    untypingAnimation(rusVerb_p, 70);
+    untypingAnimation(rusVerb_p, untypingSpeed);
     newVerbsOnly.setVerb();
     resetVerbInputs();
 }
