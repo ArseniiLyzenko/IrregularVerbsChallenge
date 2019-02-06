@@ -28,34 +28,34 @@ var score_p;
 var name_input;
 var submitName_btn;
 var backToIntro_btn;
-var sectionOne_div;
-var sectionTwo_div;
-var sectionThree_div;
+var sectionOne_section;
+var sectionTwo_section;
+var sectionThree_section;
 var scoreTable_div;
 //var score_table;
 //var score_table_body;
 
 function onLoad() {
 
-    bringItOn_btn     = document.getElementById("bring-it-on_btn");
-    verbs_form        = document.getElementById("verbs_form");
-    rusVerb_div       = document.getElementById("rus-verb_div");
-    rusVerb_p         = document.getElementById("verb-rus_p");
-    v1_input          = document.getElementById("v1_input");
-    v2_input          = document.getElementById("v2_input");
-    v3_input          = document.getElementById("v3_input");
-    submitVerbs_btn   = document.getElementById("submit-verbs_btn");
-    reset_btn         = document.getElementById("reset_btn");
-    giveUp_btn        = document.getElementById("give-up_btn");
-    gameOver_p        = document.getElementById("game-over_p");
-    score_p           = document.getElementById("score_p");
-    name_input        = document.getElementById("name_input");
-    submitName_btn    = document.getElementById("submit-name_btn");
-    backToIntro_btn   = document.getElementById("back-to-intro_btn");
-    sectionOne_div    = document.getElementById('section-one_section');
-    sectionTwo_div    = document.getElementById('section-two_section');
-    sectionThree_div  = document.getElementById('section-three_section');
-    scoreTable_div    = document.getElementById('score-table_div');
+    bringItOn_btn         = document.getElementById("bring-it-on_btn");
+    verbs_form            = document.getElementById("verbs_form");
+    rusVerb_div           = document.getElementById("rus-verb_div");
+    rusVerb_p             = document.getElementById("verb-rus_p");
+    v1_input              = document.getElementById("v1_input");
+    v2_input              = document.getElementById("v2_input");
+    v3_input              = document.getElementById("v3_input");
+    submitVerbs_btn       = document.getElementById("submit-verbs_btn");
+    reset_btn             = document.getElementById("reset_btn");
+    giveUp_btn            = document.getElementById("give-up_btn");
+    gameOver_p            = document.getElementById("game-over_p");
+    score_p               = document.getElementById("score_p");
+    name_input            = document.getElementById("name_input");
+    submitName_btn        = document.getElementById("submit-name_btn");
+    backToIntro_btn       = document.getElementById("back-to-intro_btn");
+    sectionOne_section    = document.getElementById('section-one_section');
+    sectionTwo_section    = document.getElementById('section-two_section');
+    sectionThree_section  = document.getElementById('section-three_section');
+    scoreTable_div        = document.getElementById('score-table_div');
     //score_table       = document.getElementById('score_table');
     //score_table_body  = document.getElementById('score_table_body');
 
@@ -198,17 +198,17 @@ function untypingAnimation (placeForTyping, typingSpeed) {
 function isTypingSpaceClear(typingSpace) {
     return typingSpace.innerHTML == span;
 }
-//----------------------------------first_section------------------------------
+//===================================first_section=============================
 function bringItOn() {
 
-    bringItOn_btn.disabled      = true;
+    // bringItOn_btn.disabled      = true;
 
-    v1_input.disabled           = false;
-    v2_input.disabled           = false;
-    v3_input.disabled           = false;
-    submitVerbs_btn.disabled    = false;
-    reset_btn.disabled          = false;
-    giveUp_btn.disabled         = false;
+    // v1_input.disabled           = false;
+    // v2_input.disabled           = false;
+    // v3_input.disabled           = false;
+    // submitVerbs_btn.disabled    = false;
+    // reset_btn.disabled          = false;
+    // giveUp_btn.disabled         = false;
 
     resetVerbInputs();
     newVerbsOnly.reSet();
@@ -218,13 +218,13 @@ function bringItOn() {
     if (isTypingSpaceClear(rusVerb_p)) {
         setTimeout(function (){newVerbsOnly.setVerb()}, 1000);
     } else {
-        setTimeout(function (){untypingAnimation(rusVerb_p, untypingSpeed);}, 2000); //wait for scrolling
-        setTimeout(function (){newVerbsOnly.setVerb()}, 2000); //wait for untyping animation
+        setTimeout(function (){untypingAnimation(rusVerb_p, untypingSpeed);}, 1500); //wait for scrolling
+        setTimeout(function (){newVerbsOnly.setVerb()}, 1500); //wait for untyping animation
     }
 
     //setTimeout(function () {scrollToGameAreaSector()}, 1000);
-    //sectionOne_div.style.display = "none";
-    //setTimeout(function () {sectionOne_div.style.display = "none"}, 700);
+    sectionOne_section.style.display = "none";
+    //setTimeout(function () {sectionOne_section.style.display = "none"}, 700);
 
     //setTimeout(function () {v1_input.focus()}, 700);
 }
@@ -271,20 +271,20 @@ function win() {
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
 
-    v1_input.disabled           = true;
-    v2_input.disabled           = true;
-    v3_input.disabled           = true;
-    submitVerbs_btn.disabled    = true;
-    reset_btn.disabled          = true;
-    giveUp_btn.disabled         = true;
+    // v1_input.disabled           = true;
+    // v2_input.disabled           = true;
+    // v3_input.disabled           = true;
+    // submitVerbs_btn.disabled    = true;
+    // reset_btn.disabled          = true;
+    // giveUp_btn.disabled         = true;
 
-    name_input.disabled         = false;
-    submitName_btn.disabled     = false;
-    backToIntro_btn.disabled    = false;
+    // name_input.disabled         = false;
+    // submitName_btn.disabled     = false;
+    // backToIntro_btn.disabled    = false;
 
     scrollToGameOverSector();
-    //setTimeout(function () {sectionTwo_div.style.display = "none"}, 700);
-    //sectionTwo_div.style.display = "none";
+    //setTimeout(function () {sectionTwo_section.style.display = "none"}, 700);
+    sectionTwo_section.style.display = "none";
     //setTimeout(function () {name_input.focus()}, 700);
 }
 
@@ -296,34 +296,34 @@ function giveUp() {
     score_p.innerHTML = score.get();
     newVerbsOnly.reSet();
 
-    v1_input.disabled           = true;
-    v2_input.disabled           = true;
-    v3_input.disabled           = true;
-    submitVerbs_btn.disabled    = true;
-    reset_btn.disabled          = true;
-    giveUp_btn.disabled         = true;
+    // v1_input.disabled           = true;
+    // v2_input.disabled           = true;
+    // v3_input.disabled           = true;
+    // submitVerbs_btn.disabled    = true;
+    // reset_btn.disabled          = true;
+    // giveUp_btn.disabled         = true;
 
-    name_input.disabled         = false;
-    submitName_btn.disabled     = false;
-    backToIntro_btn.disabled    = false;
+    // name_input.disabled         = false;
+    // submitName_btn.disabled     = false;
+    // backToIntro_btn.disabled    = false;
 
     scrollToGameOverSector();
-    //setTimeout(function () {sectionTwo_div.style.display = "none"}, 700);
-    //sectionTwo_div.style.display = "none";
+    //setTimeout(function () {sectionTwo_section.style.display = "none"}, 700);
+    sectionTwo_section.style.display = "none";
     //setTimeout(function () {name_input.focus()}, 700);
 }
 //---------------------------------third_section-------------------------------
 function backToIntro() {
     score.reset();
     scrollToIntroSector();
-    //setTimeout(function () {sectionThree_div.style.display = "none"}, 700);
-    //sectionThree_div.style.display = "none";
+    //setTimeout(function () {sectionThree_section.style.display = "none"}, 700);
+    sectionThree_section.style.display = "none";
 
-    bringItOn_btn.disabled      = false;
+    // bringItOn_btn.disabled      = false;
 
-    name_input.disabled         = true;
-    submitName_btn.disabled     = true;
-    backToIntro_btn.disabled    = true;
+    // name_input.disabled         = true;
+    // submitName_btn.disabled     = true;
+    // backToIntro_btn.disabled    = true;
 }
 //-----------------------------------------------------------------------------
 function resetVerbInputs() {
@@ -332,20 +332,20 @@ function resetVerbInputs() {
 //------------------------Scrolling through the sections-----------------------
 function scrollToIntroSector(callback) {
     console.log("scrollToIntroSector()");
-    //sectionOne_div.style.display = "block";
-    sectionOne_div.scrollIntoView({behavior: "smooth"});
+    sectionOne_section.style.display = "flex";
+    //sectionOne_section.scrollIntoView({behavior: "smooth"});
 }
 
 function scrollToGameAreaSector(callback) {
     console.log("scrollToGameAreaSector()");
-    //sectionTwo_div.style.display = "block";
-    sectionTwo_div.scrollIntoView({behavior: "smooth"});
+    sectionTwo_section.style.display = "flex";
+    //sectionTwo_section.scrollIntoView({behavior: "smooth"});
 }
 
 function scrollToGameOverSector(callback) {
     console.log("scrollToGameOverSector()");
-    //sectionThree_div.style.display = "block";
-    sectionThree_div.scrollIntoView({behavior: "smooth"});
+    sectionThree_section.style.display = "flex";
+    //sectionThree_section.scrollIntoView({behavior: "smooth"});
 }
 //-------------------------asynchronous_requests_&_data_base-------------------
 function submitNameAndScore() {
@@ -403,11 +403,12 @@ function xmlhttp_() {
             console.log(names);
             console.log("resultQuery_obj[iterator].name = " + resultQuery_obj[iterator].name);
             if (names.find(checkDuplicateNames)) {continue;}
+            var date = new Date(resultQuery_obj[iterator].date);
             table += "<tr>"
                     + "<td>" + ++rowNumScoreTable + "</td>"
                     + "<td>" + resultQuery_obj[iterator].name + "</td>"
                     + "<td>" + resultQuery_obj[iterator].score + "</td>"
-                    + "<td>" + resultQuery_obj[iterator].date + "</td>"
+                    + "<td>" + formatDate(date) + "</td>"
                 + "</tr>";
             names.push(resultQuery_obj[iterator].name);
         }
@@ -417,4 +418,19 @@ function xmlhttp_() {
             return name == resultQuery_obj[iterator].name;
         }
     }
+}
+
+function formatDate(date) {
+    var monthNames = [
+      "Jan", "Feb", "Mar",
+      "Apr", "May", "Jun", "Jul",
+      "Aug", "Sep", "Oct",
+      "Nov", "Dec"
+    ];
+  
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+  
+    return day + ' ' + monthNames[monthIndex] + ' ' + year;
 }

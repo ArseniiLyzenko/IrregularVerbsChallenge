@@ -3,7 +3,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     height: 100%;
     /* text-align: center; */
-    overflow: hidden;
+    /* overflow: hidden; */
     color: #2e2e2e;
 }
 
@@ -51,6 +51,11 @@ h1 {
 }
 /* ========================================================================= */
 /*                                    Section 2                              */
+
+#section-two_section {
+    display: none;
+}
+
 #verb-rus_p {
     font-size: 200%;
 }
@@ -148,6 +153,11 @@ input[type=button]:active,
 }
 /* ========================================================================= */
 /*                                    Section 3                              */
+
+#section-three_section {
+    display: none;
+}
+
 #game-over_p {
     font-size: 300%;
     margin: 0;
