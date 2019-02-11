@@ -149,7 +149,9 @@ var newVerbsOnly = (function (verbID) {
         splice: function (verbID, param) {_newVerbsOnly.splice(verbID, param); return;},
         setVerb: function (verbID) {
             this.pickVerb(this.randVerbID());
-            console.log("picked_verb_id: " + verb.get()[0]);
+            console.log("picked_verb_id: " + verb.get()[0] + " " + verb.get()[1]
+                                                           + " " + verb.get()[2]
+                                                           + " " + verb.get()[3]);
             setTimeout(function() {
                 typingAnimation(rusVerb_p, verb.get()[4], typingSpeed);},
                 (rusVerb_p.innerHTML.length - span.length) * 100
@@ -232,14 +234,11 @@ function bringItOn() {
 }
 //--------------------------------second_section-------------------------------
 function submitVerbs() {
-
     for (var i = 0; i < 3 ;i++) {
-
         if (verbs_form.elements[i].validity.valueMissing) {
             alert("value Missing");
             return;
         }
-
         if (verbs_form.elements[i].validity.patternMismatch) {
             alert("pattern Mismatch");
             return;
@@ -247,12 +246,10 @@ function submitVerbs() {
     }
 
     for (var i = 0; i < 3 ;i++) {
-
         if (verb.get()[i+1] != verbs_form.elements[i].value.toLowerCase().trim()) {
             giveUp();
             return;
         }
-
     }
     score.plusPlus();
     if (newVerbsOnly.length() == 0) {
@@ -324,7 +321,9 @@ function submitNameAndScore() {
         return;
     }
     if (name_input.value.trim() == "") {
-        //popup
+        var popup = document.getElementById("empty-name-popup_span");
+        popup.classList.toggle("showPopup");
+        setTimeout(function () {popup.classList.toggle("showPopup");}, 3000);
         return;
     }
     var queryParams_obj = {}, dbParams_json, xmlhttp;
