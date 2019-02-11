@@ -1,7 +1,7 @@
 html,
 body {
     font-family: Arial, Helvetica, sans-serif;
-    height: 100%;
+    /* height: 100%; */
     /* text-align: center; */
     /* overflow: hidden; */
     color: #2e2e2e;
@@ -191,7 +191,7 @@ input {
 
 #score-table_div {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.19);
-    /*position: absolute;----------------------------------------!----------------------------------*/
+    /*position: absolute;-----------------------!----------------------------------*/
     /* left: 50%;
     transform: translate(-50%); */
 }
@@ -217,4 +217,55 @@ th {
 
 /* *{
 	border:1px dotted blue;
+} */
+
+/* Popup container */
+.popup-container {
+    position: relative;
+}
+  
+/* The actual popup (appears on top) */
+.popup-container .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    top: 23%;
+    left: 105%; 
+    /* margin-left: -80px; */
+}
+  
+/* Popup arrow */
+.popup-container .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 33%;
+    right: 100%; /* To the left of the tooltip */
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+  
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup-container .showPopup {
+    visibility: visible;
+    /* -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s; */
+}
+
+/* Add animation (fade in the popup) */
+/* @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
 } */

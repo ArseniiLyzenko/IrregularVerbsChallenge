@@ -31,6 +31,7 @@ var backToIntro_btn;
 var sectionOne_section;
 var sectionTwo_section;
 var sectionThree_section;
+//var scoreZeroPopup_span;
 var scoreTable_div;
 //var score_table;
 //var score_table_body;
@@ -55,6 +56,7 @@ function onLoad() {
     sectionOne_section    = document.getElementById('section-one_section');
     sectionTwo_section    = document.getElementById('section-two_section');
     sectionThree_section  = document.getElementById('section-three_section');
+    //scoreZeroPopup_span   = document.getElementById("score-zero-popup_span");
     scoreTable_div        = document.getElementById('score-table_div');
     //score_table       = document.getElementById('score_table');
     //score_table_body  = document.getElementById('score_table_body');
@@ -155,7 +157,7 @@ var newVerbsOnly = (function (verbID) {
 
         },
         pickVerb: function (verbID) {
-            var newVerb = newVerbsOnly.get();
+            var newVerb = newVerbsOnly.get();//---------------------------!-----------------
 
             verb.set(newVerbsOnly.get()[verbID]);
             newVerbsOnly.splice(verbID, 1);
@@ -173,7 +175,7 @@ function typingAnimation (placeForTyping, text, typingSpeed) {
         console.log("typeWriter(" + i + ") : " + text.substring(0, i+1));
         if (i < (text.length)) {
             placeForTyping.innerHTML = text.substring(0, i+1) + span;
-            setTimeout(function() {typeWriter(i + 1)}, typingSpeed);
+            setTimeout(function () {typeWriter(i + 1)}, typingSpeed);
         }
     }
 
@@ -216,10 +218,10 @@ function bringItOn() {
     scrollToGameAreaSector();
     
     if (isTypingSpaceClear(rusVerb_p)) {
-        setTimeout(function (){newVerbsOnly.setVerb()}, 1000);
+        setTimeout(function () {newVerbsOnly.setVerb()}, 1000);
     } else {
-        setTimeout(function (){untypingAnimation(rusVerb_p, untypingSpeed);}, 1500); //wait for scrolling
-        setTimeout(function (){newVerbsOnly.setVerb()}, 1500); //wait for untyping animation
+        setTimeout(function () {untypingAnimation(rusVerb_p, untypingSpeed);}, 1500); //wait for scrolling
+        setTimeout(function () {newVerbsOnly.setVerb()}, 1500); //wait for untyping animation
     }
 
     //setTimeout(function () {scrollToGameAreaSector()}, 1000);
@@ -306,19 +308,43 @@ function giveUp() {
     // name_input.disabled         = false;
     // submitName_btn.disabled     = false;
     // backToIntro_btn.disabled    = false;
-
+    
     scrollToGameOverSector();
     //setTimeout(function () {sectionTwo_section.style.display = "none"}, 700);
     sectionTwo_section.style.display = "none";
     //setTimeout(function () {name_input.focus()}, 700);
 }
 //---------------------------------third_section-------------------------------
+function submitNameAndScore() {
+    if (score.get() == 0) { // isScoreZero
+        // When the user clicks on <div>, open the popup
+        var popup = document.getElementById("score-zero-popup_span");
+        popup.classList.toggle("showPopup");
+        setTimeout(function () {popup.classList.toggle("showPopup");}, 3000);
+        return;
+    }
+    if (name_input.value.trim() == "") {
+        //popup
+        return;
+    }
+    var queryParams_obj = {}, dbParams_json, xmlhttp;
+    queryParams_obj = { "name":name_input.value.trim(), //removes whitespace from both sides of the string
+                        "score":score.get()
+                      };
+    dbParams_json = JSON.stringify(queryParams_obj);
+    console.log("dbParams_json = " + dbParams_json);
+    xmlhttp = xmlhttp_();
+    xmlhttp.open("POST", "json_score_tabl_db_post.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("dbParams_json=" + dbParams_json);
+}
+
 function backToIntro() {
     score.reset();
     scrollToIntroSector();
     //setTimeout(function () {sectionThree_section.style.display = "none"}, 700);
     sectionThree_section.style.display = "none";
-
+    
     // bringItOn_btn.disabled      = false;
 
     // name_input.disabled         = true;
@@ -348,18 +374,6 @@ function scrollToGameOverSector(callback) {
     //sectionThree_section.scrollIntoView({behavior: "smooth"});
 }
 //-------------------------asynchronous_requests_&_data_base-------------------
-function submitNameAndScore() {
-    var queryParams_obj = {}, dbParams_json, xmlhttp;
-    queryParams_obj = { "name":name_input.value.trim(), //removes whitespace from both sides of the string
-                        "score":score.get()
-                      };
-    dbParams_json = JSON.stringify(queryParams_obj);
-    console.log("dbParams_json = " + dbParams_json);
-    xmlhttp = xmlhttp_();
-    xmlhttp.open("POST", "json_score_tabl_db_post.php", true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("dbParams_json=" + dbParams_json);
-}
 
 function requestScoreTable() {
     var xmlhttp;

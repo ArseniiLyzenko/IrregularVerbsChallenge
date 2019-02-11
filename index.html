@@ -48,9 +48,12 @@
 
         <section id="section-three_section" class="sections">
             <p id="game-over_p">place_for_win_or_lose</p>
-            <p id="score_p">place_for_score</p>
+            <div class="popup-container">
+                <p id="score_p">place_for_score</p>
+                <span id="score-zero-popup_span" class="popuptext">Score is zero.</span>
+            </div>
             <form id="name_form" action="#" autocomplete="off">
-                <input  id="name_input" type="text" name="playerName" placeholder="Your name">
+                <input id="name_input" type="text" name="playerName" placeholder="Your name">
                 <div id="name-btns_div">
                     <input  id="submit-name_btn" type="button" value="Submit" onclick="submitNameAndScore()">
                     <input  id="back-to-intro_btn" type="button" value="Back" onclick="backToIntro()">
