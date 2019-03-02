@@ -354,7 +354,7 @@ function backToIntro() {
 function resetVerbInputs() {
     reset_btn.click();
 }
-//------------------------Scrolling through the sections-----------------------
+//======================= Scrolling through the sections ======================
 function scrollToIntroSector(callback) {
     console.log("scrollToIntroSector()");
     sectionOne_section.style.display = "flex";
@@ -372,7 +372,7 @@ function scrollToGameOverSector(callback) {
     sectionThree_section.style.display = "flex";
     //sectionThree_section.scrollIntoView({behavior: "smooth"});
 }
-//-------------------------asynchronous_requests_&_data_base-------------------
+//====================== asynchronous requests & data base ====================
 
 function requestScoreTable() {
     var xmlhttp;
@@ -411,12 +411,14 @@ function xmlhttp_() {
                         </tr>\
                     </thead>\
                     <tbody id='score_table_body'>";
+        var date;
 
         for (iterator in resultQuery_obj) {
             console.log(names);
             console.log("resultQuery_obj[iterator].name = " + resultQuery_obj[iterator].name);
             if (names.find(checkDuplicateNames)) {continue;}
-            var date = new Date(resultQuery_obj[iterator].date);
+            console.log("resultQuery_obj[iterator].date = " + resultQuery_obj[iterator].date);
+            date = new Date(resultQuery_obj[iterator].date);
             table += "<tr>"
                     + "<td>" + ++rowNumScoreTable + "</td>"
                     + "<td>" + resultQuery_obj[iterator].name + "</td>"
