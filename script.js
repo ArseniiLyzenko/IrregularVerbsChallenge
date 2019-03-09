@@ -216,9 +216,9 @@ function bringItOn() {
 
     resetVerbInputs();
     newVerbsOnly.reSet();
-    
+
     scrollToGameAreaSector();
-    
+
     if (isTypingSpaceClear(rusVerb_p)) {
         setTimeout(function () {newVerbsOnly.setVerb()}, 1000);
     } else {
@@ -305,7 +305,7 @@ function giveUp() {
     // name_input.disabled         = false;
     // submitName_btn.disabled     = false;
     // backToIntro_btn.disabled    = false;
-    
+
     scrollToGameOverSector();
     //setTimeout(function () {sectionTwo_section.style.display = "none"}, 700);
     sectionTwo_section.style.display = "none";
@@ -343,7 +343,7 @@ function backToIntro() {
     scrollToIntroSector();
     //setTimeout(function () {sectionThree_section.style.display = "none"}, 700);
     sectionThree_section.style.display = "none";
-    
+
     // bringItOn_btn.disabled      = false;
 
     // name_input.disabled         = true;
@@ -442,10 +442,10 @@ function formatDate(date) {
       "Aug", "Sep", "Oct",
       "Nov", "Dec"
     ];
-  
+
     var day = date.getDate();
     var monthIndex = date.getMonth();
     var year = date.getFullYear();
-  
+
     return day + ' ' + monthNames[monthIndex] + ' ' + year;
 }
