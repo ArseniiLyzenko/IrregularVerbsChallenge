@@ -95,7 +95,7 @@ function onLoad() {
     //     }
     // });
 }
-//================================function_closures============================
+//=============================== function closures ===========================
 var verb = (function (newVerb) {
     var _verb;
     return {
@@ -169,7 +169,7 @@ var newVerbsOnly = (function (verbID) {
         }
     };
 })();
-//----------------------------------typing_animation---------------------------
+//=============================== typing animation ============================
 function typingAnimation (placeForTyping, text, typingSpeed) {
     console.log("typingAnimation(" + placeForTyping.id + ", \"" + text + "\", " + typingSpeed + ")");
 
@@ -202,7 +202,7 @@ function untypingAnimation (placeForTyping, typingSpeed) {
 function isTypingSpaceClear(typingSpace) {
     return typingSpace.innerHTML == span;
 }
-//===================================first_section=============================
+//================================ first section ==============================
 function bringItOn() {
 
     // bringItOn_btn.disabled      = true;
@@ -232,7 +232,7 @@ function bringItOn() {
 
     //setTimeout(function () {v1_input.focus()}, 700);
 }
-//--------------------------------second_section-------------------------------
+//================================ second section =============================
 function submitVerbs() {
     for (var i = 0; i < 3 ;i++) {
         if (verbs_form.elements[i].validity.valueMissing) {
@@ -311,7 +311,7 @@ function giveUp() {
     sectionTwo_section.style.display = "none";
     //setTimeout(function () {name_input.focus()}, 700);
 }
-//---------------------------------third_section-------------------------------
+//================================== third section ============================
 function submitNameAndScore() {
     if (score.get() == 0) { // isScoreZero
         // When the user clicks on <div>, open the popup
