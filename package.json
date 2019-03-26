@@ -1,0 +1,26 @@
+{
+  "name": "IrregularVerbsChallenge",
+  "version": "1.0.0",
+  "description": "Проектик создан в образовательных целях/the project was created just for educational purposes.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "cleancss -o ./prod/style.css ./style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PticaGovorun/IrregularVerbsChallenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PticaGovorun/IrregularVerbsChallenge/issues"
+  },
+  "homepage": "https://github.com/PticaGovorun/IrregularVerbsChallenge#readme",
+  "devDependencies": {
+    "clean-css": "^4.2.1",
+    "clean-css-cli": "^4.2.1"
+  },
+  "dependencies": {}
+}
