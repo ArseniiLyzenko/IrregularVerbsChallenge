@@ -5,7 +5,8 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "css": "cleancss -o ./prod/style.css ./style.css"
+    "css": "cleancss -o ./dist/style.css ./style.css",
+    "babel": "npx babel ./script.js --presets @babel/env -o ./dist/script.babel.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
   },
   "homepage": "https://github.com/PticaGovorun/IrregularVerbsChallenge#readme",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
     "clean-css": "^4.2.1",
     "clean-css-cli": "^4.2.1"
   },

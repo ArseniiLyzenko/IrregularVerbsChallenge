@@ -1,0 +1,313 @@
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* height: 100%; */
+    /* text-align: center; */
+    /* overflow: hidden; */
+    color: #2e2e2e;
+}
+
+h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 300%;
+}
+
+.sections {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+/* ========================================================================= */
+/*                                Section 1                                  */
+#bring-it-on_btn {
+    -webkit-animation: shake 1.5s;
+            animation: shake 1.5s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    transition: 0.4s;
+}
+
+#bring-it-on_btn:hover {
+    font-size: 250%;
+    transition: 0.4s;
+    -webkit-animation: shake 0.5s;
+            animation: shake 0.5s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes shake {
+    0% { -webkit-transform: translate(1px, 1px) rotate(0deg); transform: translate(1px, 1px) rotate(0deg); }
+    10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); transform: translate(-3px, 0px) rotate(1deg); }
+    30% { -webkit-transform: translate(3px, 2px) rotate(0deg); transform: translate(3px, 2px) rotate(0deg); }
+    40% { -webkit-transform: translate(1px, -1px) rotate(1deg); transform: translate(1px, -1px) rotate(1deg); }
+    50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); transform: translate(-3px, 1px) rotate(0deg); }
+    70% { -webkit-transform: translate(3px, 1px) rotate(-1deg); transform: translate(3px, 1px) rotate(-1deg); }
+    80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); transform: translate(-1px, -1px) rotate(1deg); }
+    90% { -webkit-transform: translate(1px, 2px) rotate(0deg); transform: translate(1px, 2px) rotate(0deg); }
+    100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes shake {
+    0% { -webkit-transform: translate(1px, 1px) rotate(0deg); transform: translate(1px, 1px) rotate(0deg); }
+    10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); transform: translate(-3px, 0px) rotate(1deg); }
+    30% { -webkit-transform: translate(3px, 2px) rotate(0deg); transform: translate(3px, 2px) rotate(0deg); }
+    40% { -webkit-transform: translate(1px, -1px) rotate(1deg); transform: translate(1px, -1px) rotate(1deg); }
+    50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); transform: translate(-3px, 1px) rotate(0deg); }
+    70% { -webkit-transform: translate(3px, 1px) rotate(-1deg); transform: translate(3px, 1px) rotate(-1deg); }
+    80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); transform: translate(-1px, -1px) rotate(1deg); }
+    90% { -webkit-transform: translate(1px, 2px) rotate(0deg); transform: translate(1px, 2px) rotate(0deg); }
+    100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); transform: translate(1px, -2px) rotate(-1deg); }
+}
+/* ========================================================================= */
+/*                                    Section 2                              */
+
+#section-two_section {
+    display: none;
+}
+
+#verb-rus_p {
+    font-size: 200%;
+}
+
+#carriage {
+    border-left: 2px solid;
+    -webkit-animation: caret 1s steps(1) infinite;
+            animation: caret 1s steps(1) infinite;
+}
+
+@-webkit-keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+#verbs_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+input[type=text] {
+    width: 200px;
+    text-align: center;
+    line-height: 200%;
+    font-size: 1em;
+    color: #333;
+    background: #fff;
+    border: solid 1px #d9d9d9;
+    margin-bottom: 4px;
+}
+
+/* input[type=text]:focus {
+
+} */
+
+#input-btns_div {
+    margin: 20px;
+}
+
+input[type=button],
+     [type=reset] {
+    font-size: 130%;
+    color: #2e2e2e;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+}
+
+#input-btns_div
+input[type=button],
+     [type=reset] {
+    width: 90px;
+}
+
+input[type=button]:hover,
+     [type=reset]:hover {
+    border: 1px #C6C6C6 solid;
+    box-shadow: 1px 1px 1px #EAEAEA;
+    color: #333333;
+    background: #F7F7F7;
+}
+
+input[type=button]:active,
+     [type=reset]:active {
+    box-shadow: inset 1px 1px 1px #DFDFDF;
+}
+
+/* input[type=button]:focus,
+     [type=reset]:focus {
+
+} */
+
+:-moz-placeholder { /* Firefox 18- */
+    text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;
+}
+
+:-ms-input-placeholder {
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+#give-up_btn {
+    cursor: not-allowed;
+}
+/* ========================================================================= */
+/*                                    Section 3                              */
+
+#section-three_section {
+    display: none;
+}
+
+#game-over_p {
+    font-size: 300%;
+    margin: 0;
+}
+
+#score_p {
+    font-size: 250%;
+    margin: 10px;
+}
+
+#name_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+#name_input {
+    padding-top: 2px;
+    border-width: 1px;
+}
+
+#name-btns_div {
+    margin-left: 4px;
+}
+
+#name-btns_div input {
+    padding: 5px 10px 6px 10px;
+}
+
+#score-table_div {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.19);
+    /*position: absolute;-----------------------!----------------------------------*/
+    /* left: 50%;
+    transform: translate(-50%); */
+}
+
+#score_table {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    display: block;
+    overflow-y: auto;
+    max-height: 244px;
+}
+
+td,
+th {
+    padding-right: 10px;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+/* @media only screen and (min-width : 320px) and (max-width : 480px) {
+    Styles
+}*/
+
+/* *{
+    border:1px dotted blue;
+} */
+
+/* Popup container */
+.popup-container {
+    position: relative;
+}
+
+/* The actual popup (appears on top) */
+.popup-container .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    /* margin-left: -80px; */
+}
+
+.popup-container .right-popup {
+    top: 23%;
+    left: 105%;
+}
+
+.popup-container .top-popup {
+    bottom: 100%;
+    left: 50%;
+}
+
+/* Popup arrow */
+.popup-container .right-popup::after {
+    content: "";
+    position: absolute;
+    top: 33%;
+    right: 100%; /* To the left of the tooltip */
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+
+.popup-container .top-popup::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup-container .showPopup {
+    visibility: visible;
+    /* -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s; */
+}
+
+/* Add animation (fade in the popup) */
+/* @-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+} */
