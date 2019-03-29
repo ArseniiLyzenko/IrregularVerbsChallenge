@@ -5,8 +5,8 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "css": "cleancss -o ./dist/style.css ./style.css",
-    "babel": "npx babel ./script.js --presets @babel/env -o ./dist/script.babel.js"
+    "css": "cleancss -o ./dist/style.css ./src/style.css",
+    "babel": "npx babel ./src/script.js --presets @babel/env -o ./dist/script.babel.js"
   },
   "repository": {
     "type": "git",
