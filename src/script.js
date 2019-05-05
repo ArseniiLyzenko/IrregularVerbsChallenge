@@ -1,7 +1,4 @@
 "use strict";
-/**
- *
- */
 
 const span = '<span id="carriage">&nbsp;</span>'; // The &nbsp (non-breaking space or just whitespace) need to fix unexpected behavior of span tag
 const couldNotLoad = '[["1","null","null","null","Could not load the table of irregular verbs :("]]';
@@ -12,89 +9,63 @@ const wellPlayed = "Well Played!";
 const typingSpeed = 100;
 const untypingSpeed = 70;
 
-// how to make constant-global variables and declare them after page loading?!
-var bringItOn_btn;
-var verbs_form;
-var rusVerb_div;
-var rusVerb_p;
-var v1_input;
-var v2_input;
-var v3_input;
-var submitVerbs_btn;
-var reset_btn;
-var giveUp_btn;
-var gameOver_p;
-var score_p;
-var name_input;
-var submitName_btn;
-var backToIntro_btn;
-var sectionOne_section;
-var sectionTwo_section;
-var sectionThree_section;
-//var scoreZeroPopup_span;
-var scoreTable_div;
-//var score_table;
-//var score_table_body;
+const bringItOn_btn         = document.getElementById("bring-it-on_btn");
+const verbs_form            = document.getElementById("verbs_form");
+const rusVerb_div           = document.getElementById("rus-verb_div");
+const rusVerb_p             = document.getElementById("verb-rus_p");
+const v1_input              = document.getElementById("v1_input");
+const v2_input              = document.getElementById("v2_input");
+const v3_input              = document.getElementById("v3_input");
+const submitVerbs_btn       = document.getElementById("submit-verbs_btn");
+const reset_btn             = document.getElementById("reset_btn");
+const giveUp_btn            = document.getElementById("give-up_btn");
+const gameOver_p            = document.getElementById("game-over_p");
+const score_p               = document.getElementById("score_p");
+const name_input            = document.getElementById("name_input");
+const submitName_btn        = document.getElementById("submit-name_btn");
+const backToIntro_btn       = document.getElementById("back-to-intro_btn");
+const sectionOne_section    = document.getElementById('section-one_section');
+const sectionTwo_section    = document.getElementById('section-two_section');
+const sectionThree_section  = document.getElementById('section-three_section');
+//const scoreZeroPopup_span   = document.getElementById("score-zero-popup_span");
+const scoreTable_div        = document.getElementById('score-table_div');
+//const score_table       = document.getElementById('score_table');
+//const score_table_body  = document.getElementById('score_table_body');
 
-function onLoad() {
+//=============================hot-keys====================================
+//ебучие хоткеи не пашут как надо в chrome, хотя в firefox всё работает
 
-    bringItOn_btn         = document.getElementById("bring-it-on_btn");
-    verbs_form            = document.getElementById("verbs_form");
-    rusVerb_div           = document.getElementById("rus-verb_div");
-    rusVerb_p             = document.getElementById("verb-rus_p");
-    v1_input              = document.getElementById("v1_input");
-    v2_input              = document.getElementById("v2_input");
-    v3_input              = document.getElementById("v3_input");
-    submitVerbs_btn       = document.getElementById("submit-verbs_btn");
-    reset_btn             = document.getElementById("reset_btn");
-    giveUp_btn            = document.getElementById("give-up_btn");
-    gameOver_p            = document.getElementById("game-over_p");
-    score_p               = document.getElementById("score_p");
-    name_input            = document.getElementById("name_input");
-    submitName_btn        = document.getElementById("submit-name_btn");
-    backToIntro_btn       = document.getElementById("back-to-intro_btn");
-    sectionOne_section    = document.getElementById('section-one_section');
-    sectionTwo_section    = document.getElementById('section-two_section');
-    sectionThree_section  = document.getElementById('section-three_section');
-    //scoreZeroPopup_span   = document.getElementById("score-zero-popup_span");
-    scoreTable_div        = document.getElementById('score-table_div');
-    //score_table       = document.getElementById('score_table');
-    //score_table_body  = document.getElementById('score_table_body');
+// v1_input.addEventListener("keyup", function(event) {
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         v1_input.focus();
+//         submitVerbs_btn.click();
+//     }
+// });
 
-    //=============================hot-keys====================================
-    //ебучие хоткеи не пашут как надо в chrome, хотя в firefox всё работает
+// v2_input.addEventListener("keyup", function(event) {
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         v1_input.focus();
+//         submitVerbs_btn.click();
+//     }
+// });
 
-    // v1_input.addEventListener("keyup", function(event) {
-    //     event.preventDefault();
-    //     if (event.keyCode === 13) {
-    //         v1_input.focus();
-    //         submitVerbs_btn.click();
-    //     }
-    // });
+// v3_input.addEventListener("keyup", function(event) {
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         v1_input.focus();
+//         submitVerbs_btn.click();
+//     }
+// });
 
-    // v2_input.addEventListener("keyup", function(event) {
-    //     event.preventDefault();
-    //     if (event.keyCode === 13) {
-    //         v1_input.focus();
-    //         submitVerbs_btn.click();
-    //     }
-    // });
+// name_input.addEventListener("keyup", function(event) {
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         submitName_btn.click();
+//     }
+// });
 
-    // v3_input.addEventListener("keyup", function(event) {
-    //     event.preventDefault();
-    //     if (event.keyCode === 13) {
-    //         v1_input.focus();
-    //         submitVerbs_btn.click();
-    //     }
-    // });
-
-    // name_input.addEventListener("keyup", function(event) {
-    //     event.preventDefault();
-    //     if (event.keyCode === 13) {
-    //         submitName_btn.click();
-    //     }
-    // });
-}
 //=============================== function closures ===========================
 var verb = (function (newVerb) {
     var _verb;
